@@ -1,11 +1,11 @@
 {
-  "name": "Hostel",
+  "name": "Sagandunga",
   "version": "0.0.1",
-  "description": "Simple app for Hostel reservations management",
+  "description": "React demo app",
   "scripts": {
     "client": "cd client && npm start",
     "server": "cd server && npm start",
-    "start": "concurrently --kill-others \"mongod --dbpath db \" \"npm run server\" \"npm run client\" ",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\" ",
     "test": "which concurrently"
   },
   "keywords": [],
@@ -14,8 +14,5 @@
   "devDependencies": {
     "node": "^11.1.0",
     "concurrently": "^4.1.0"
-  },
-  "dependencies": {
-    "mongoose": "^5.3.13"
   }
 }
