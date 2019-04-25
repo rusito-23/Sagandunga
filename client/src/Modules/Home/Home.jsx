@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import './Home.sass';
+import Login from './Login/Login.jsx'
 
 class Home extends Component {
   render() {
     return (
       <div className="Home">
         <header className="Home-header">
-          <p>
-              Welcome to Locos por el asado!
-          </p>
-          <a
-            className="Home-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          Hello world!
-          </a>
+          <Login />
         </header>
       </div>
     );
