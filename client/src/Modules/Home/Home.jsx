@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import logo from '../assets/img/logo.svg';
-import '../assets/style/App.css';
+import './Home.sass';
 
-class HomeRegister extends Component {
+class Home extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="Home">
+        <header className="Home-header">
           <p>
               Welcome to Locos por el asado!
           </p>
           <a
-            className="App-link"
+            className="Home-link"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+          Hello world!
           </a>
         </header>
       </div>
@@ -24,4 +23,4 @@ class HomeRegister extends Component {
   }
 }
 
-export default HomeRegister;
+export default Home;
