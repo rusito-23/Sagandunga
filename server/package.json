@@ -1,8 +1,17 @@
 {
-  "name": "SagandungaServer",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "go run main.go"
-  }
+    "name": "SagandungaServer",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "mongo": "mongod --dbpath db",
+        "server": "node main.js",
+        "start": "concurrently --kill-others \"npm run mongo\" \"npm run server\""
+    },
+    "devDependencies": {
+        "node": "^11.1.0",
+        "concurrently": "^4.1.0"
+    },
+    "dependencies": {
+        "mongoose": "^5.3.13"
+    }
 }
