@@ -3,8 +3,8 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "mongo": "mongod --dbpath db",
-        "server": "node main.js",
+        "mongo": "mongod --quiet --dbpath ../data",
+        "server": "node src/main.js",
         "start": "concurrently --kill-others \"npm run mongo\" \"npm run server\""
     },
     "devDependencies": {

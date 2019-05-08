@@ -1,5 +1,15 @@
+
+
+# IGNORE LIBRARIES
 node_modules
-DS_Store
+
+# OS FILES
+.DS_Store
+*.swp
+
+# IDE FILES
 .idea
-db/*
+
+# IGNORE DB
+data/
 
