@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "mongo": "mongod --quiet --dbpath ../data",
+        "mongo": "mongod --dbpath ../data --config mongod.conf > mongod.logs",
         "server": "node src/main.js",
         "start": "concurrently --kill-others \"npm run mongo\" \"npm run server\""
     },
@@ -12,6 +12,7 @@
         "concurrently": "^4.1.0"
     },
     "dependencies": {
+        "express": "^4.16.4",
         "mongoose": "^5.3.13"
     }
 }

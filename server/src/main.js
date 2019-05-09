@@ -1,25 +1,10 @@
 
-var http = require('http');
-var mongoose = require('mongoose')
-var model = require('./model/Model.js')
-
-// SETUP MONGO
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/Sagandunga')
-    .then(res => console.log("Connected to DB"))
-    .catch(err => console.log(err))
+const db = require('./db.js');
+const api = require('./api.js');
 
 
-// SERVER START
-http.createServer(function (request, response) {
+function main() {
+    db.connect();
+}
 
-    // response content
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-
-    // url listener
-
-}).listen(8080);
-
-
-console.log("Server running on http://localhost:8080!")
-
+main()

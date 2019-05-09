@@ -2,8 +2,10 @@
  * Export all my models in a single dependecie
  * */
 
-var user = require('./User.js');
+const user = require('./User.js');
+const loc = require('./Location.js');
 
 module.exports = {
     User: user.User,
+    Location: loc.Location,
 };

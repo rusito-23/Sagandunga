@@ -13,3 +13,5 @@ node_modules
 # IGNORE DB
 data/
 
+# IGNORE LOGS
+server/mongod.logs
