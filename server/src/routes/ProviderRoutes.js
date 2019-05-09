@@ -14,7 +14,7 @@ module.exports = function (app, errorHandler) {
     // GET
     app.get('/api/providers', (req, res) => {
         const filter = {};
-        if (req.body.locationName !== undefined) {
+        if (req.body.locationName) {
 
             // check if location exists
             const locQuery = model.Location.findOne({ name: req.body.locationName });
