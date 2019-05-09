@@ -11,3 +11,7 @@ module.exports.connect = function () {
         .then(res => console.log("Connected to DB"))
         .catch(err => console.log(err))
 };
+
+module.exports.errorCodes = {
+    DUPLICATED_KEY: 11000,
+};

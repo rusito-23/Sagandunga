@@ -4,16 +4,15 @@
 
 const express = require('express');
 const model = require('./model/Model.js');
+const db = require('./db.js');
 
 const app = express();
+// parser
+app.use(express.json());
 
 /*
  * METHOD HANDLING
  * */
-
-app.get('/api/', (req, res) => {
-    return res.send('Received a GET HTTP method!')
-});
 
 // LOCATION
 
@@ -25,15 +24,16 @@ app.get('/api/locations', (req, res) => {
 
 app.post('/api/locations', (req, res) => {
     const loc = new model.Location(req.body);
-    console.log(req.body);
-    // loc.save(function (err) {
-    //     if (err) {
-    //         res.status(400).send("Error creating location");
-    //     } else {
-    //         res.status(200).send('OK');
-    //     }
-    // })
-    res.status(200).send('OK');
+    loc.save().then(function() {
+        res.status(200).send('OK');
+    }).catch(function (err) {
+        console.log(err);
+        if (err.code === db.errorCodes.DUPLICATED_KEY) {
+            res.status(409).send('Existing location name');
+        } else {
+            res.status(400).send('Malformed entity');
+        }
+    });
 });
 
 
@@ -42,14 +42,11 @@ app.post('/api/locations', (req, res) => {
  * */
 
 // error handling
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
     console.error(err.message);
     if (!err.statusCode) err.statusCode = 500;
     res.status(err.statusCode).send(err.message);
 });
-
-// parser
-app.use(express.json());
 
 // listener
 app.listen(8080, () =>
