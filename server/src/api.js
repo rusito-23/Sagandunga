@@ -19,8 +19,9 @@ const errorHandler = function (err, res) {
 };
 
 // routes!
-require('./Routes/LocationRoutes.js')(app, errorHandler);
-require('./Routes/ConsumerRoutes.js')(app, errorHandler);
+require('./routes/LocationRoutes.js')(app, errorHandler);
+require('./routes/ConsumerRoutes.js')(app, errorHandler);
+require('./routes/ProviderRoutes.js')(app, errorHandler);
 
 // listen!
 app.listen(8080, () =>

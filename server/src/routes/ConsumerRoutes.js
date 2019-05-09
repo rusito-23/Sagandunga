@@ -1,17 +1,16 @@
 
-const model = require('../model/Model.js');
+const model = require('../model');
 const db = require('../db.js');
 
 module.exports = function (app, errorHandler) {
 
     // GET
     app.get('/api/consumers', (req, res) => {
-        const query = model.Consumer.find({}).select({ _id: 0, username: 1, locationId: 1});
+        const query = model.Consumer.find({});
         query.exec().then(function (data) {
             res.send(data);
         }).catch(function (err) { errorHandler(err, res); })
     });
-
 
     // POST
     app.post('/api/consumers', (req, res) => {
