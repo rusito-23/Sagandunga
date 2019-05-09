@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const ConsumerSchema = new mongoose.Schema({
     username: {type: String, required: true, unique: true},
-    locationId: {type: String, required: true},
+    locationId: {type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true},
     balance: {type: Number, required: true, default: 0},
 });
 

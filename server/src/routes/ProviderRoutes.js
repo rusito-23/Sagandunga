@@ -13,7 +13,6 @@ module.exports = function (app, errorHandler) {
 
     // GET
     app.get('/api/providers', (req, res) => {
-        const filter = {};
         if (req.body.locationName) {
 
             // check if location exists
@@ -21,15 +20,14 @@ module.exports = function (app, errorHandler) {
             locQuery.exec().then(function (loc) {
 
                 // filter by locationId
-                filter.locationId = loc.id;
-                getProviders(filter, res);
+                getProviders({locationId: loc.id}, res);
 
             }).catch(function () {
                 // 404 : Non existing location
                 res.status(404).send("Non existing location");
             });
         } else {
-            getProviders(filter, res);
+            getProviders({}, res);
         }
 
     });
