@@ -3,13 +3,13 @@
  * */
 
 const loc = require('./Location.js');
-const consumer = require('./Consumer.js');
-const provider = require('./Provider.js');
+const users = require('./Users.js');
 const item = require('./Item.js');
 
 module.exports = {
     Location: loc.Location,
-    Consumer: consumer.Consumer,
-    Provider: provider.Provider,
+    User: users.User,
+    Consumer: users.Consumer,
+    Provider: users.Provider,
     Item: item.Item,
 };
