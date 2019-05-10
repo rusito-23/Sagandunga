@@ -30,10 +30,10 @@ module.exports = function (app, errorHandler) {
             }).catch(function (err) {
                 // Existing username??
                 if (err.code === db.errorCodes.DUPLICATED_KEY ) {
-                    res.status(409).send("Existing username");
+                    res.status(409).send('Existing username');
                 } else { errorHandler(err, res); }
             })
-        }).catch(function (err) { console.log(err); res.status(404).send("Non existing location"); })
+        }).catch(function (err) { console.log(err); res.status(404).send('Non existing location'); })
     });
 
 };

@@ -24,7 +24,7 @@ module.exports = function (app, errorHandler) {
 
             }).catch(function () {
                 // 404 : Non existing location
-                res.status(404).send("Non existing location");
+                res.status(404).send('Non existing location');
             });
         } else {
             getProviders({}, res);
@@ -50,10 +50,10 @@ module.exports = function (app, errorHandler) {
             }).catch(function (err) {
                 // Existing username??
                 if (err.code === db.errorCodes.DUPLICATED_KEY ) {
-                    res.status(409).send("Existing username");
+                    res.status(409).send('Existing username');
                 } else { errorHandler(err, res); }
             })
-        }).catch(function () { res.status(404).send("Non existing location"); })
+        }).catch(function () { res.status(404).send('Non existing location'); })
     });
 
 };

@@ -48,10 +48,10 @@ module.exports = function (app, errorHandler) {
 
             }).catch(function (err) {
                 if (err.code === db.errorCodes.DUPLICATED_KEY ) {
-                    res.status(409).send("Existing item for provider");
+                    res.status(409).send('Existing item for provider');
                 } else { errorHandler(err, res); }
             })
-        }).catch(function () { res.status(404).send("Non existing provider"); })
+        }).catch(function () { res.status(404).send('Non existing provider'); })
     });
 
     // DELETE

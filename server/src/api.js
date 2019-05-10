@@ -15,7 +15,7 @@ app.use(function (req, res, next) {
 // error handler
 const errorHandler = function (err, res) {
     console.log(err);
-    res.status(500).send("An error ocurrred, please try again later.");
+    res.status(500).send('An error ocurrred, please try again later.');
 };
 
 // routes!

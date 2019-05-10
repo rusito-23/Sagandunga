@@ -5,16 +5,42 @@ module.exports = function (app, errorHandler) {
 
   // GET ALL FOR USER
   app.get('/api/orders', (req, res) => {
-    model.User.find(req.body).then(function (user) {
+    model.User.findOne(req.body).then(function (user) {
       // find every order where user is provider or consumer
-      const userQuery = {$or: [{providerId: user.id}, {consumerId: user.id}]};
-      model.Order.find(userQuery).then(function (orders) {
-
-        // if we found the orders, delete items
-        // TODO: and join with consumer and provider data
-        delete orders.items;
+      const userQuery = {$or: [{providerId: user._id}, {consumerId: user._id}]};
+      model.Order.aggregate([
+        { $match : userQuery},
+        {
+          $lookup:
+            {
+              from: 'users',
+              localField: 'providerId',
+              foreignField: '_id',
+              as: 'provider'
+            }
+        },
+        {
+          $lookup:
+            {
+              from: 'users',
+              localField: 'consumerId',
+              foreignField: '_id',
+              as: 'censumer'
+            }
+        },
+        { $unwind : '$provider' },
+        { $unwind : '$consumer' },
+        {
+          $group: {
+            _id: '$_id',
+            consumerUsername: { $first: '$consumer.username' },
+            providerUsername: { $first: '$provider.username' },
+            status : { $first : '$status'}
+          }
+        }
+      ]).then(function (orders) {
+        // we found the orders
         res.status(200).send(orders);
-
       }).catch(function (err) {
         errorHandler(err, res);
       })
