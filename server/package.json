@@ -5,6 +5,7 @@
     "scripts": {
         "mongo": "mongod --dbpath ../data --config mongod.conf > mongod.logs",
         "server": "node src/main.js",
+        "load_data": "sh mongo-import-testdata.sh",
         "start": "concurrently --kill-others \"npm run mongo\" \"npm run server\""
     },
     "devDependencies": {

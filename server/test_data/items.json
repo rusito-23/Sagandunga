@@ -1,0 +1,74 @@
+[
+  {
+    "_id": {
+      "$oid": "5cd57816f1764e75e4c89a32"
+    },
+    "name": "Lomito Completo",
+    "description": "Un buen lomo",
+    "price": 230,
+    "providerId": {
+      "$oid": "5cd577acf1764e75e4c89a2f"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5cd5782df1764e75e4c89a33"
+    },
+    "name": "Lomito Mexicane",
+    "description": "Un lomo con morrón",
+    "price": 260,
+    "providerId": {
+      "$oid": "5cd577acf1764e75e4c89a2f"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5cd57850f1764e75e4c89a34"
+    },
+    "name": "Lomito 348",
+    "description": "Un lomo lomo, clásico cordobés",
+    "price": 350,
+    "providerId": {
+      "$oid": "5cd577c2f1764e75e4c89a30"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5cd5786df1764e75e4c89a35"
+    },
+    "name": "Lomito mixto",
+    "description": "Una mezcla rara de pollo con carne, asquerosa",
+    "price": 200,
+    "providerId": {
+      "$oid": "5cd577c2f1764e75e4c89a30"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5cd57888f1764e75e4c89a36"
+    },
+    "name": "Muzzarella",
+    "description": "Pan con tomate y queso",
+    "price": 500,
+    "providerId": {
+      "$oid": "5cd577d5f1764e75e4c89a31"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5cd578bbf1764e75e4c89a37"
+    },
+    "name": "Napolitana",
+    "description": "Una pizza",
+    "price": 300,
+    "providerId": {
+      "$oid": "5cd577d5f1764e75e4c89a31"
+    },
+    "__v": 0
+  }
+]
