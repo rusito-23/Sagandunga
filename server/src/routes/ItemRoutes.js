@@ -16,7 +16,7 @@ module.exports = function (app, errorHandler) {
         if (req.body.providerUsername) {
 
             // check if provider exists
-            const providerQuery = model.Provider.findOne({ username: req.body.providerUsername })
+            const providerQuery = model.Provider.findOne({ username: req.body.providerUsername });
             providerQuery.exec().then(function (provider) {
 
                 // filter by providerId

@@ -24,6 +24,7 @@ require('./routes/ConsumerRoutes.js')(app, errorHandler);
 require('./routes/ProviderRoutes.js')(app, errorHandler);
 require('./routes/UserRoutes.js')(app, errorHandler);
 require('./routes/ItemRoutes.js')(app, errorHandler);
+require('./routes/OrderRoutes.js')(app, errorHandler);
 
 // listen!
 app.listen(8080, () =>
