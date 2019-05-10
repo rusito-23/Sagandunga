@@ -27,7 +27,7 @@ module.exports = function (app, errorHandler) {
     // CREATE ORDER
     app.post('/api/orders', (req, res) => {
         // search provider and consumer
-        const userQuery = {username: {$or: [req.body['providerUsername'], req.body['consumerUsername']]}};
+        const userQuery = {username: {$in: [req.body['providerUsername'], req.body['consumerUsername']]}};
         model.User.find(userQuery).then(function (users) {
             // create new order
             let order = {};
@@ -38,29 +38,32 @@ module.exports = function (app, errorHandler) {
 
             // search items
             const itemQuery = { name : { $in: req.body['items'].name } };
-            model.Item.find(itemQuery).then(function (res) {
+            model.Item.find(itemQuery).then(function (items) {
 
-                // create items array with amount information
-                const items = [];
-                for (let item in res) {
-                    items.concat({
-                        id : item.id,
-                        amount : req.body['items'].find(function (e) { return e.name === item.name }).amount
-                    });
-                }
+                // complete order with items ammount information
+                order.items = items.map(function (e) {
+                    return {
+                        id: e._id,
+                        amount : req.body['items'].find(function (e) {
+                            return e.name === item.name
+                        }).amount
+                    }
+                });
 
-                // complete and save order
-                order.items = items;
-                order.save().then(function (order) {
+                // save order
+                new model.Order(order).save().then(function (order) {
                     res.status(200).send(order.id);
                 }).catch(function (err) {
                     errorHandler(err, res);
                 })
-            }).catch(function () {
-                res.status(404).send('Non existing provider/consumer/item');
+
+            }).catch(function (err) {
+                console.log(err);
+                res.status(404).send('Non existing item');
             })
-        }).catch(function () {
-            res.status(404).send('Non existing provider/consumer/item');
+        }).catch(function (err) {
+            console.log(err);
+            res.status(404).send('Non existing provider/consumer');
         })
     });
 
