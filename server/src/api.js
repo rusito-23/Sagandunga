@@ -20,9 +20,9 @@ const errorHandler = function (err, res) {
 // routes!
 require('./routes/LocationRoutes.js')(app);
 require('./routes/ConsumerRoutes.js')(app);
-require('./routes/ProviderRoutes.js')(app, errorHandler);
-require('./routes/UserRoutes.js')(app, errorHandler);
-require('./routes/ItemRoutes.js')(app, errorHandler);
+require('./routes/ProviderRoutes.js')(app);
+require('./routes/UserRoutes.js')(app);
+require('./routes/ItemRoutes.js')(app);
 require('./routes/OrderRoutes.js')(app, errorHandler);
 
 // error handler

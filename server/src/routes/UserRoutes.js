@@ -1,17 +1,15 @@
 
 const model = require('../model');
-const db = require('../db.js');
+const mongoose = require('mongoose');
 
-module.exports = function (app, errorHandler) {
+module.exports = function (app) {
 
     // DELETE
-    app.post('/api/users/delete/:id', function (req, res) {
-        model.User.findOne( { _id: req.params.id }).then(function (user) {
-            user.remove();
-            res.status(200).send('OK');
-        }).catch(function () {
-            res.status(404).send('Non existing user');
-        })
+    app.post('/api/users/delete/:id', function (req, res, next) {
+        model.User.findOneAndDelete({ _id: mongoose.Schema.ObjectId(req.params.id) })
+            .then(function () {
+                res.send('OK');
+            }).catch(err => next(err))
     })
 
 };

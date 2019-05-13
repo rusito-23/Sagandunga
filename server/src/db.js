@@ -17,25 +17,26 @@ mongoose.plugin(function (schema) {
         } else {
             next(doc)
         }
-    })
-});
+    });
 
-// change duplicate key error
-mongoose.plugin(function (schema) {
+    // change duplicate key error
     schema.post('save', function (err, doc, next) {
         if (err.code === dbCodes.DUPLICATED_KEY) {
             next(custom.Error.Existing(schema.existing))
         } else {
             next(doc)
         }
-    })
-});
+    });
 
-// exception if not found
-mongoose.plugin(function (schema) {
+    // exception if not found
     schema.post('findOne', function (doc) {
         if (!doc) { throw custom.Error.NonExisting(schema.nonExisting) }
-    })
+    });
+
+    // exception if not found on delete
+    schema.post('findOneAndDelete', function (err, doc) {
+        if (!doc) { throw custom.Error.NonExisting(schema.nonExisting) }
+    });
 });
 
 const connect = function () {

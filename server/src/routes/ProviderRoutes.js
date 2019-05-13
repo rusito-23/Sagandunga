@@ -1,59 +1,40 @@
 
 const model = require('../model');
-const db = require('../db.js');
 
-module.exports = function (app, errorHandler) {
-
-    const getProviders = function (filter, res) {
-        const query = model.Provider.find(filter);
-        query.exec().then(function (data) {
-            res.send(data);
-        }).catch(function (err) { errorHandler(err, res); })
-    };
+module.exports = function (app) {
 
     // GET
-    app.get('/api/providers', (req, res) => {
-        if (req.body.locationName) {
+    app.get('/api/providers', (req, res, next) => {
+        // filter helpers
+        const {locationName: shouldFilter} = req.body;
+        const {locationName} = req.body;
+        const filter = {};
+        const query = shouldFilter ? {name: locationName} : {};
 
-            // check if location exists
-            const locQuery = model.Location.findOne({ name: req.body.locationName });
-            locQuery.exec().then(function (loc) {
-
-                // filter by locationId
-                getProviders({locationId: loc.id}, res);
-
-            }).catch(function () {
-                // 404 : Non existing location
-                res.status(404).send('Non existing location');
-            });
-        } else {
-            getProviders({}, res);
-        }
-
+        model.Location.findOne(query)
+            .then(function (loc) {
+                if (shouldFilter) {
+                    filter.locationId = loc.id
+                }
+            }).then(function () {
+                return model.Provider.find(filter)
+            }).then(function () {
+                res.send(data);
+            }).catch(err => next(err));
     });
 
     // POST
-    app.post('/api/providers', (req, res) => {
+    app.post('/api/providers', (req, res, next) => {
         // check if location exists
-        const locQuery = model.Location.findOne({ name: req.body.location });
-        locQuery.exec().then(function (loc) {
-
-            // create new provider
-            delete req.body.location;
-            req.body.locationId = loc.id;
-            const provider = new model.Provider(req.body);
-
-            // save provider
-            provider.save().then(function (provider) {
-                res.status(200).send(provider.id);
-
-            }).catch(function (err) {
-                // Existing username??
-                if (err.code === db.codes.DUPLICATED_KEY ) {
-                    res.status(409).send('Existing username');
-                } else { errorHandler(err, res); }
-            })
-        }).catch(function () { res.status(404).send('Non existing location'); })
+        model.Location.findOne({ name: req.body.location })
+            .then(function (loc) {
+                // create new provider
+                req.body.locationId = loc.id;
+                const provider = new model.Provider(req.body);
+                return provider.save();
+            }).then(function (provider) {
+                res.send(provider.id);
+            }).catch(err => next(err))
     });
 
 };
