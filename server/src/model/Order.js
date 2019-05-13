@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 
+// Schema
 const OrderSchema = new mongoose.Schema({
     providerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Provider', required: true},
     consumerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Consumer', required: true},
@@ -11,5 +12,10 @@ const OrderSchema = new mongoose.Schema({
     status: { type: String, enum: ['payed', 'delivered', 'finished'], required: true, default: 'payed' }
 });
 
+// custom attributes
+OrderSchema.existing = 'order';
+OrderSchema.nonExisting = 'order';
+
+// Model
 mongoose.model('Order', OrderSchema);
 module.exports.Order = mongoose.model('Order');

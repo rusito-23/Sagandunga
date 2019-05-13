@@ -25,7 +25,7 @@ module.exports = function (app, errorHandler) {
               from: 'users',
               localField: 'consumerId',
               foreignField: '_id',
-              as: 'censumer'
+              as: 'consumer'
             }
         },
         { $unwind : '$provider' },

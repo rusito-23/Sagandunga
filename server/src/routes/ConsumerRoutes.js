@@ -24,8 +24,6 @@ module.exports = function (app) {
         // check if location exists
         model.Location.findOne({name: req.body.location})
             .then(function (loc) {
-                if (!loc) { throw custom.Error.NonExisting('Non existing location'); }
-
                 // create new consumer
                 req.body.locationId = loc.id;
                 const consumer = new model.Consumer(req.body);

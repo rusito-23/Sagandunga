@@ -24,10 +24,17 @@ mongoose.plugin(function (schema) {
 mongoose.plugin(function (schema) {
     schema.post('save', function (err, doc, next) {
         if (err.code === dbCodes.DUPLICATED_KEY) {
-            next(custom.Error.Existing(schema.name))
+            next(custom.Error.Existing(schema.existing))
         } else {
             next(doc)
         }
+    })
+});
+
+// exception if not found
+mongoose.plugin(function (schema) {
+    schema.post('findOne', function (doc) {
+        if (!doc) { throw custom.Error.NonExisting(schema.nonExisting) }
     })
 });
 

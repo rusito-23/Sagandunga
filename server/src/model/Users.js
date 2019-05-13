@@ -9,7 +9,10 @@ const UserSchema = new mongoose.Schema({
     username: {type: String, required: true},
     locationId: {type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true},
 }, options);
-UserSchema.name = 'user';
+
+// custom attributes
+UserSchema.existing = 'user';
+UserSchema.nonExisting = 'user';
 
 // username index as unique
 UserSchema.index({ username: 1 }, {
@@ -29,7 +32,11 @@ const User = mongoose.model('User', UserSchema);
 const ConsumerSchema = new mongoose.Schema({
     balance: {type: Number, required: true, default: 0},
 }, options);
-ConsumerSchema.name = 'consumer';
+
+// custom attributes
+ConsumerSchema.existing = 'consumer';
+ConsumerSchema.nonExisting = 'consumer';
+
 const Consumer = User.discriminator('Consumer', ConsumerSchema);
 
 // PROVIDER SCHEMA
@@ -37,7 +44,11 @@ const ProviderSchema = new mongoose.Schema({
     storeName: {type: String, required: true},
     maxDeliveryDistance: {type: Number, required: true},
 }, options);
-ProviderSchema.name = 'provider';
+
+// custom attributes
+ProviderSchema.existing = 'provider';
+ProviderSchema.nonExisting = 'provider';
+
 const Provider = User.discriminator('Provider', ProviderSchema);
 
 // EXPORTS
