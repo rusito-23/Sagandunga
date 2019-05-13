@@ -19,7 +19,7 @@ module.exports = function(app, errorHandler) {
             res.status(200).send(loc.id);
         }).catch(function (err) {
             console.log(err);
-            if (err.code === db.errorCodes.DUPLICATED_KEY) {
+            if (err.code === db.codes.DUPLICATED_KEY) {
                 res.status(409).send('Existing location name');
             } else {
                 res.status(400).send('Malformed entity');

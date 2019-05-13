@@ -49,7 +49,7 @@ module.exports = function (app, errorHandler) {
 
             }).catch(function (err) {
                 // Existing username??
-                if (err.code === db.errorCodes.DUPLICATED_KEY ) {
+                if (err.code === db.codes.DUPLICATED_KEY ) {
                     res.status(409).send('Existing username');
                 } else { errorHandler(err, res); }
             })

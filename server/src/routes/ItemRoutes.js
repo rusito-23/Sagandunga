@@ -47,7 +47,7 @@ module.exports = function (app, errorHandler) {
                 res.status(200).send(item.id);
 
             }).catch(function (err) {
-                if (err.code === db.errorCodes.DUPLICATED_KEY ) {
+                if (err.code === db.codes.DUPLICATED_KEY ) {
                     res.status(409).send('Existing item for provider');
                 } else { errorHandler(err, res); }
             })

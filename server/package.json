@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "mongo": "mongod --dbpath ../data --config mongod.conf > mongod.logs",
-        "server": "node src/main.js",
+        "server": "nodemon src/main.js",
         "load_data": "sh mongo-import-testdata.sh",
         "start": "concurrently --kill-others \"npm run mongo\" \"npm run server\""
     },
@@ -14,6 +14,7 @@
     },
     "dependencies": {
         "express": "^4.16.4",
-        "mongoose": "^5.3.13"
+        "mongoose": "^5.3.13",
+        "nodemon": "^1.19.0"
     }
 }
