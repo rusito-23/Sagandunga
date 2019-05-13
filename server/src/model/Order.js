@@ -16,6 +16,32 @@ const OrderSchema = new mongoose.Schema({
 OrderSchema.existing = 'order';
 OrderSchema.nonExisting = 'order';
 
+// custom methods
+OrderSchema.statics.findByUser = function(user) {
+    const userQuery = {$or: [{providerId: user._id}, {consumerId: user._id}]};
+    this.aggregate([
+        { $match : userQuery},
+        {$lookup:
+                { from: 'users',
+                  localField: 'providerId',
+                  foreignField: '_id',
+                  as: 'provider' } },
+        { $lookup:
+                { from: 'users',
+                  localField: 'consumerId',
+                  foreignField: '_id',
+                  as: 'consumer' } },
+        { $unwind : '$provider' },
+        { $unwind : '$consumer' },
+        { $group: {
+                _id: '$_id',
+                consumerUsername: { $first: '$consumer.username' },
+                providerUsername: { $first: '$provider.username' },
+                status : { $first : '$status'}
+        }}
+    ])
+};
+
 // Model
 mongoose.model('Order', OrderSchema);
 module.exports.Order = mongoose.model('Order');
