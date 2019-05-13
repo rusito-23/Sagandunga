@@ -1,9 +1,35 @@
 /*
  * MONGOOSE DB SETUP
  * */
+const custom = require('./custom.js');
 
 const mongoose = require('mongoose');
 
+const dbCodes = {
+    DUPLICATED_KEY: 11000,
+};
+
+// change validation exception for all schemas
+mongoose.plugin(function (schema) {
+    schema.post('validate', function (err, doc, next) {
+        if (err) {
+            next(custom.Error.Malformed())
+        } else {
+            next(doc)
+        }
+    })
+});
+
+// change duplicate key error
+mongoose.plugin(function (schema) {
+    schema.post('save', function (err, doc, next) {
+        if (err.code === dbCodes.DUPLICATED_KEY) {
+            next(custom.Error.Existing(schema.name))
+        } else {
+            next(doc)
+        }
+    })
+});
 
 const connect = function () {
     mongoose.Promise = global.Promise;
@@ -12,40 +38,7 @@ const connect = function () {
         .catch(err => console.log(err))
 };
 
-const dbCodes = {
-    DUPLICATED_KEY: 11000,
-};
-
-const status = {
-    NON_EXISTING: 404,
-    EXISTING: 409,
-    MALFORMED: 400,
-};
-
-class DbError extends Error {
-    constructor(statusCode, message) {
-        super();
-        this.customError = true;
-        this.statusCode = statusCode;
-        this.message = message;
-    }
-
-    static NonExisting(message) {
-        return new DbError(status.NON_EXISTING, message)
-    }
-
-    static Existing(message) {
-        return new DbError(status.EXISTING, message)
-    }
-
-    static Malformed() {
-        return new DbError(status.MALFORMED, 'Malformed exception')
-    }
-
-}
-
 module.exports = {
     connect: connect,
     codes: dbCodes,
-    Error: DbError
 };

@@ -18,7 +18,7 @@ const errorHandler = function (err, res) {
 };
 
 // routes!
-require('./routes/LocationRoutes.js')(app, errorHandler);
+require('./routes/LocationRoutes.js')(app);
 require('./routes/ConsumerRoutes.js')(app);
 require('./routes/ProviderRoutes.js')(app, errorHandler);
 require('./routes/UserRoutes.js')(app, errorHandler);
@@ -26,9 +26,14 @@ require('./routes/ItemRoutes.js')(app, errorHandler);
 require('./routes/OrderRoutes.js')(app, errorHandler);
 
 // error handler
-app.use(function (err, req, res) {
-    if (err.customError) { res.status(err.statusCode).send(err.message)
-    } else { res.status(500).send('Internal server error') }
+app.use(function (err, req, res, next) {
+    if (err.customError) {
+        res.status(err.statusCode).send(err.message);
+    } else {
+        console.error(err);
+        res.status(500).send('Internal server error');
+    }
+    next()
 });
 
 // listen!
