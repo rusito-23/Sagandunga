@@ -23,7 +23,7 @@ ItemSchema.statics.findForOrder = function(names, providerId) {
     return this.find(query)
         .then((items) => {
             if (items.length !== names.length) {
-                throw custom.Error.NonExisting(this.nonExistingForProvider)
+                throw custom.Error.NonExisting('item for provider')
             }
             return items
         })

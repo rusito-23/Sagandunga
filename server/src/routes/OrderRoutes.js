@@ -48,7 +48,7 @@ module.exports = function (app) {
                 model.User.updateBalance(consumer, provider, totalPrice),
                 order
             ])
-        }).then(([order]) => {
+        }).then(([_, order]) => {
             // save order
             return order.save()
         }).then(function (order) {

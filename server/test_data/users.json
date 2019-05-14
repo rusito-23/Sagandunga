@@ -1,9 +1,9 @@
 [
   {
     "_id": {
-      "$oid": "5cd57769f1764e75e4c89a2d"
+      "$oid": "5cdb0d6067caeb94efa5188a"
     },
-    "balance": 0,
+    "balance": 500,
     "kind": "Consumer",
     "username": "rusito23",
     "locationId": {
@@ -13,11 +13,11 @@
   },
   {
     "_id": {
-      "$oid": "5cd57784f1764e75e4c89a2e"
+      "$oid": "5cdb0d7467caeb94efa5188b"
     },
-    "balance": 0,
+    "balance": 15000,
     "kind": "Consumer",
-    "username": "san_jorge_98",
+    "username": "ulisesBuenoPa",
     "locationId": {
       "$oid": "5cd57747f1764e75e4c89a2c"
     },
@@ -25,12 +25,13 @@
   },
   {
     "_id": {
-      "$oid": "5cd577acf1764e75e4c89a2f"
+      "$oid": "5cdb0dc667caeb94efa5188c"
     },
+    "balance": 0,
     "kind": "Provider",
     "username": "betos23",
     "storeName": "Betos",
-    "maxDeliveryDistance": 100,
+    "maxDeliveryDistance": 230,
     "locationId": {
       "$oid": "5cd57736f1764e75e4c89a2b"
     },
@@ -38,27 +39,15 @@
   },
   {
     "_id": {
-      "$oid": "5cd577c2f1764e75e4c89a30"
+      "$oid": "5cdb0de467caeb94efa5188d"
     },
+    "balance": 0,
     "kind": "Provider",
     "username": "lomitos348",
-    "storeName": "Lomitos 348",
-    "maxDeliveryDistance": 150,
+    "storeName": "Lomitos348",
+    "maxDeliveryDistance": 115,
     "locationId": {
       "$oid": "5cd57736f1764e75e4c89a2b"
-    },
-    "__v": 0
-  },
-  {
-    "_id": {
-      "$oid": "5cd577d5f1764e75e4c89a31"
-    },
-    "kind": "Provider",
-    "username": "inmor_tales",
-    "storeName": "Los inmortales",
-    "maxDeliveryDistance": 500,
-    "locationId": {
-      "$oid": "5cd57747f1764e75e4c89a2c"
     },
     "__v": 0
   }

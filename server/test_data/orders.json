@@ -1,0 +1,59 @@
+[
+  {
+    "_id": {
+      "$oid": "5cdb109daa1a03091f2b2343"
+    },
+    "status": "payed",
+    "consumerId": {
+      "$oid": "5cdb0d6067caeb94efa5188a"
+    },
+    "providerId": {
+      "$oid": "5cdb0dc667caeb94efa5188c"
+    },
+    "items": [
+      {
+        "_id": {
+          "$oid": "5cdb109daa1a03091f2b2344"
+        },
+        "id": {
+          "$oid": "5cdb0ec84a735539b180352a"
+        },
+        "amount": 1
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5cdb11fb29f1ef0c871ebac1"
+    },
+    "status": "payed",
+    "consumerId": {
+      "$oid": "5cdb0d7467caeb94efa5188b"
+    },
+    "providerId": {
+      "$oid": "5cdb0dc667caeb94efa5188c"
+    },
+    "items": [
+      {
+        "_id": {
+          "$oid": "5cdb11fb29f1ef0c871ebac3"
+        },
+        "id": {
+          "$oid": "5cdb0ec84a735539b180352a"
+        },
+        "amount": 2
+      },
+      {
+        "_id": {
+          "$oid": "5cdb11fb29f1ef0c871ebac2"
+        },
+        "id": {
+          "$oid": "5cdb0eda4a735539b180352b"
+        },
+        "amount": 1
+      }
+    ],
+    "__v": 0
+  }
+]

@@ -34,6 +34,7 @@ module.exports = function (app) {
     // POST
     app.post('/api/items', (req, res, next) => {
         // check if provider exists
+        // TODO: no reconoce el error de Malformed Entity
         model.Provider.findOne({ username: req.body.providerUsername })
             .then(function (prov) {
                 // create new item with given provider
@@ -42,7 +43,7 @@ module.exports = function (app) {
                 // save item
                 return item.save();
             }).then(function (item) {
-                res.status(200).send(item.id);
+                res.status(200).send(item._id);
             }).catch(function (err) {
                 next(err);
             })

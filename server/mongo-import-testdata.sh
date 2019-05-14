@@ -4,6 +4,7 @@
 # mongoimport <collection-name>
 # searches automatically into test_data/<collection_name>.json
 mongoimportjson() {
+    mongo Sagandunga --eval "db.$1.drop()"
     mongoimport --jsonArray \
                 --db Sagandunga \
                 --collection $1 \
@@ -14,3 +15,4 @@ mongoimportjson() {
 mongoimportjson users
 mongoimportjson locations
 mongoimportjson items
+mongoimportjson orders
