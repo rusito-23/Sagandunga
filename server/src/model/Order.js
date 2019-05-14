@@ -19,7 +19,7 @@ OrderSchema.nonExisting = 'order';
 // custom methods
 OrderSchema.statics.findByUser = function(user) {
     const userQuery = {$or: [{providerId: user._id}, {consumerId: user._id}]};
-    this.aggregate([
+    return this.aggregate([
         { $match : userQuery},
         {$lookup:
                 { from: 'users',

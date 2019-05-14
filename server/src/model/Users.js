@@ -1,13 +1,19 @@
 
 const mongoose = require('mongoose');
 
-// GENERAL
+// General
 const options = { discriminatorKey: 'kind'};
+module.exports.options = options;
 
-// USER SCHEMA
+// Schema
 const UserSchema = new mongoose.Schema({
+
+    // User attributes
     username: {type: String, required: true},
+    balance: {type: Number, required: true, default: 0},
     locationId: {type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true},
+
+    // TODO: Authentication - mail?
 }, options);
 
 // custom attributes
@@ -26,34 +32,6 @@ UserSchema.index({ storeName: 1 },{
         kind : 'Provider'
     }
 });
-const User = mongoose.model('User', UserSchema);
 
-// CONSUMER SCHEMA
-const ConsumerSchema = new mongoose.Schema({
-    balance: {type: Number, required: true, default: 0},
-}, options);
-
-// custom attributes
-ConsumerSchema.existing = 'consumer';
-ConsumerSchema.nonExisting = 'consumer';
-
-const Consumer = User.discriminator('Consumer', ConsumerSchema);
-
-// PROVIDER SCHEMA
-const ProviderSchema = new mongoose.Schema({
-    storeName: {type: String, required: true},
-    maxDeliveryDistance: {type: Number, required: true},
-}, options);
-
-// custom attributes
-ProviderSchema.existing = 'provider';
-ProviderSchema.nonExisting = 'provider';
-
-const Provider = User.discriminator('Provider', ProviderSchema);
-
-// EXPORTS
-module.exports ={
-    User: User,
-    Consumer: Consumer,
-    Provider: Provider
-};
+// Model
+module.exports.User = mongoose.model('User', UserSchema);
