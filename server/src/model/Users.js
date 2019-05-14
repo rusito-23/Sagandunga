@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose');
+const custom = require('../custom.js');
 
 // General
 const options = { discriminatorKey: 'kind'};
@@ -32,6 +33,16 @@ UserSchema.index({ storeName: 1 },{
         kind : 'Provider'
     }
 });
+
+// custom static methods
+UserSchema.statics.updateBalance = function(consumer, provider, totalPrice) {
+    // check consumer balance
+    if (consumer.balance - totalPrice < 0) { throw custom.Error.NonSufficientBalance() }
+
+    // update users
+    consumer.balance -= totalPrice; provider.balance += totalPrice;
+    return Promise.all([consumer.save(), provider.save()])
+};
 
 // Model
 module.exports.User = mongoose.model('User', UserSchema);

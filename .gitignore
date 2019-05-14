@@ -13,5 +13,8 @@ node_modules
 # IGNORE DB
 data/
 
+# BUILD FILES
+server/dist
+
 # IGNORE LOGS
 server/mongod.logs
