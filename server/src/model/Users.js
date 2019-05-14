@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const custom = require('../custom.js');
+const custom = require('../config/custom.js');
 
 // General
 const options = { discriminatorKey: 'kind'};
@@ -10,11 +10,15 @@ module.exports.options = options;
 const UserSchema = new mongoose.Schema({
 
     // User attributes
-    username: {type: String, required: true},
-    balance: {type: Number, required: true, default: 0},
-    locationId: {type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true},
+    username: { type: String, required: true },
+    balance: { type: Number, required: true, default: 0 },
+    locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true },
 
-    // TODO: Authentication - mail?
+    // Authentication
+    email: { type: String, required: true },
+    hash: { type: String, required: true },
+    salt: { type: String, required: true },
+
 }, options);
 
 // custom attributes
@@ -22,7 +26,7 @@ UserSchema.existing = 'user';
 UserSchema.nonExisting = 'user';
 
 // username index as unique
-UserSchema.index({ username: 1 }, {
+UserSchema.index({ username: 1, email: 1 }, {
     unique: true,
 });
 
@@ -43,6 +47,9 @@ UserSchema.statics.updateBalance = function(consumer, provider, totalPrice) {
     consumer.balance -= totalPrice; provider.balance += totalPrice;
     return Promise.all([consumer.save(), provider.save()])
 };
+
+// Setup Authentication
+require('./UserAuth.js')(UserSchema);
 
 // Model
 module.exports.User = mongoose.model('User', UserSchema);

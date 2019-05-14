@@ -1,8 +1,8 @@
 
-const db = require('./db.js');
+const db = require('./config/db.js');
 
 
 function main() {
     db.connect();
-    require('./api.js')();
+    require('./config/api.js')();
 } main();

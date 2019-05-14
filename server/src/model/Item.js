@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const custom = require('../custom.js');
+const custom = require('../config/custom.js');
 
 // schema
 const ItemSchema = new mongoose.Schema({

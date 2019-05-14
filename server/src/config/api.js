@@ -18,13 +18,16 @@ module.exports = function () {
         res.status(500).send('An error ocurred, please try later');
     };
 
-    // routes!
-    require('./routes/LocationRoutes.js')(app);
-    require('./routes/ConsumerRoutes.js')(app);
-    require('./routes/ProviderRoutes.js')(app);
-    require('./routes/UserRoutes.js')(app);
-    require('./routes/ItemRoutes.js')(app);
-    require('./routes/OrderRoutes.js')(app, errorHandler);
+    // Load routes!
+    require('../routes/LocationRoutes.js')(app);
+    require('../routes/ConsumerRoutes.js')(app);
+    require('../routes/ProviderRoutes.js')(app);
+    require('../routes/UserRoutes.js')(app);
+    require('../routes/ItemRoutes.js')(app);
+    require('../routes/OrderRoutes.js')(app, errorHandler);
+
+    // Load passport configuration
+    require('./passport.js');
 
     // error handler
     app.use(function (err, req, res, next) {
