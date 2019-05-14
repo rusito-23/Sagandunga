@@ -1,6 +1,5 @@
 
 const model = require('../model');
-const db = require('../db.js');
 
 module.exports = function (app) {
 
