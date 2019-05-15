@@ -1,7 +1,6 @@
-
 const mongoose = require('mongoose');
-const User = require('./Users.js').User;
-const options = require('./Users.js').options;
+const User = require('./users.js').User;
+const options = require('./users.js').options;
 
 // Schema
 const ProviderSchema = new mongoose.Schema({
@@ -14,5 +13,4 @@ ProviderSchema.existing = 'provider';
 ProviderSchema.nonExisting = 'provider';
 
 // Model
-module.exports.Provider = User.discriminator('Provider', ProviderSchema);
-
+module.exports = User.discriminator('Provider', ProviderSchema);

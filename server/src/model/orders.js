@@ -1,6 +1,5 @@
-
 const mongoose = require('mongoose');
-const Item = require('./Item').Item;
+const Item = require('./items').Item;
 
 // Schema
 const OrderSchema = new mongoose.Schema({
@@ -18,7 +17,7 @@ OrderSchema.existing = 'order';
 OrderSchema.nonExisting = 'order';
 
 // custom static methods
-OrderSchema.statics.findByUser = function(user) {
+OrderSchema.statics.findByUser = (user) => {
     const userQuery = {$or: [{providerId: user._id}, {consumerId: user._id}]};
     return this.aggregate([
         { $match : userQuery},
@@ -44,7 +43,7 @@ OrderSchema.statics.findByUser = function(user) {
 };
 
 // custom methods
-OrderSchema.methods.totalPrice = function() { return new Promise(((resolve, reject) => {
+OrderSchema.methods.totalPrice = () => { return new Promise(((resolve, reject) => {
     Item.find({_id: {$in: this.items.map(i => i.id)}})
         .then(items => {
             resolve( items
@@ -61,5 +60,4 @@ OrderSchema.methods.totalPrice = function() { return new Promise(((resolve, reje
 }))};
 
 // Model
-mongoose.model('Order', OrderSchema);
-module.exports.Order = mongoose.model('Order');
+module.exports = mongoose.model('Order', OrderSchema);

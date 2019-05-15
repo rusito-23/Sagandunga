@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
     ).then(orders =>
         // we found the orders
         res.status(200).send(orders)
-    ).catch(err => next(err))
+    ).catch(next)
 });
 
 // CREATE
@@ -55,30 +55,30 @@ router.post('/', (req, res, next) => {
     }).then(([_, order]) => {
         // save order
         return order.save()
-    }).then(function (order) {
+    }).then((order) => {
         res.status(200).send(order.id);
-    }).catch(err => next(err))
+    }).catch(next)
 });
 
 // DELIVER
-router.post('/deliver/:id', function (req, res, next) {
+router.post('/deliver/:id', (req, res, next) => {
     model.Order.findOne({_id: req.params.id})
     .then(order => {
         order.status = 'delivered';
         return order.save();
     })
     .then(() => res.send('OK'))
-    .catch(err => next(err))
+    .catch(next)
 });
 
 // DELETE
-router.post('/delete/:id', function (req, res, next) {
+router.post('/delete/:id', (req, res, next) => {
     model.Order.findOne({_id: req.params.id})
     .then(order => {
         return order.remove();
     })
     .then(() => res.send('OK'))
-    .catch(err => next(err))
+    .catch(next)
 });
 
 module.exports = router;

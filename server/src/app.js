@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 // Route logger!
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     console.log(`${new Date().toLocaleString()} :: ${req.method} ----- ${req.originalUrl}`);
     next();
 });
@@ -21,7 +21,7 @@ require('./config/passport.js');
 app.use(require('./routes'));
 
 // Error handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     if (err.customError) {
         res.status(err.statusCode).send(err.message);
     } else {

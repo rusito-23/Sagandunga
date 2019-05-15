@@ -11,13 +11,13 @@ router.get('/', (req, res, next) => {
 
     // queries
     model.Provider.findOne(query)
-        .then(function (provider) {
-            if (shouldFilter) {
-                filter.providerId = provider.id
-            }
-        }).then(function () {
+    .then((provider) => {
+        if (shouldFilter) {
+            filter.providerId = provider.id
+        }
+    }).then(() => {
         return model.Item.find(filter)
-    }).then(function (data) {
+    }).then((data) => {
         // return item
         res.send(data.map(item => {
             return {
@@ -28,7 +28,7 @@ router.get('/', (req, res, next) => {
                 providerId: item.providerId
             };
         }));
-    }).catch(err => next(err))
+    }).catch(next)
 });
 
 // POST
@@ -36,29 +36,25 @@ router.post('/', (req, res, next) => {
     // check if provider exists
     // TODO: no reconoce el error de Malformed Entity
     model.Provider.findOne({username: req.body.providerUsername})
-        .then(function (prov) {
-            // create new item with given provider
-            req.body.providerId = prov.id;
-            const item = new model.Item(req.body);
-            // save item
-            return item.save();
-        }).then(function (item) {
+    .then((prov) => {
+        // create new item with given provider
+        req.body.providerId = prov.id;
+        const item = new model.Item(req.body);
+        // save item
+        return item.save();
+    }).then((item) => {
         res.status(200).send(item._id);
-    }).catch(function (err) {
-        next(err);
-    })
+    }).catch(next)
 });
 
 // DELETE
 router.post('/delete/:id', (req, res, next) => {
     // TODO: check with a token if provider owns the item!
     model.Item.findOne({_id: req.params.id})
-        .then(function (item) {
-            item.remove();
-            res.status(200).send('OK');
-        }).catch(function (err) {
-        next(err);
-    })
+    .then((item) => {
+        item.remove();
+        res.status(200).send('OK');
+    }).catch(next)
 });
 
 module.exports = router;

@@ -1,10 +1,9 @@
-
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
-module.exports = function(UserSchema) {
+module.exports = (UserSchema) => {
 
-    const encrypt = function(pass, salt) {
+    const encrypt = (pass, salt) => {
         crypto.pbkdf2Sync(
             pass,
             salt,
@@ -15,18 +14,18 @@ module.exports = function(UserSchema) {
 
     // Password
 
-    UserSchema.methods.setPassword = function (password) {
+    UserSchema.methods.setPassword = (password) => {
         this.salt = crypto.randomBytes(16).toString('hex');
         this.hash = encrypt(password, this.salt);
     };
 
-    UserSchema.methods.validatePassword = function(password) {
+    UserSchema.methods.validatePassword = (password) => {
         return encrypt(pass, this.salt) === password;
     };
 
     // Token
 
-    UserSchema.methods.generateJWT = function () {
+    UserSchema.methods.generateJWT = () => {
         const today = new Date();
         const expirationDate = new Date(today.getDate() + 60);
 
@@ -38,7 +37,7 @@ module.exports = function(UserSchema) {
     };
 
     // TODO: should I have this?
-    UserSchema.methods.toAuthJSON = function () {
+    UserSchema.methods.toAuthJSON = () => {
         return {
             _id: this._id,
             email: this.email,

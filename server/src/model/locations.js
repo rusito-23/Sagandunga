@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 // schema
@@ -13,5 +12,4 @@ LocationSchema.existing = 'location';
 LocationSchema.nonExisting = 'location';
 
 // model
-mongoose.model('Location', LocationSchema);
-module.exports.Location = mongoose.model('Location');
+module.exports = mongoose.model('Location', LocationSchema);

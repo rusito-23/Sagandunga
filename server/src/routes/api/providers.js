@@ -10,29 +10,29 @@ router.get('/', (req, res, next) => {
     const query = shouldFilter ? {name: locationName} : {};
 
     model.Location.findOne(query)
-    .then(function (loc) {
+    .then((loc) => {
         if (shouldFilter) {
             filter.locationId = loc.id
         }
-    }).then(function () {
+    }).then(() => {
         return model.Provider.find(filter)
     }).then((providers) => {
         res.send(providers);
-    }).catch(err => next(err));
+    }).catch(next);
 });
 
 // POST
 router.post('/', (req, res, next) => {
     // check if location exists
     model.Location.findOne({name: req.body.location})
-    .then(function (loc) {
+    .then((loc) => {
         // create new provider
         req.body.locationId = loc.id;
         const provider = new model.Provider(req.body);
         return provider.save();
-    }).then(function (provider) {
+    }).then((provider) => {
         res.send(provider.id);
-    }).catch(err => next(err))
+    }).catch(next)
 });
 
 module.exports = router;

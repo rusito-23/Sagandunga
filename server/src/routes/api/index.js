@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/locations',    require('./LocationRoutes'));
-router.use('/consumers',    require('./ConsumerRoutes'));
-router.use('/providers',    require('./ProviderRoutes'));
-router.use('/items',        require('./ItemRoutes'));
-router.use('/orders',       require('./OrderRoutes'));
-router.use('/users',        require('./UserRoutes'));
+router.use('/locations',    require('./locations'));
+router.use('/consumers',    require('./consumers'));
+router.use('/providers',    require('./providers'));
+router.use('/items',        require('./items'));
+router.use('/orders',       require('./orders'));
+router.use('/users',        require('./users'));
 
 module.exports = router;

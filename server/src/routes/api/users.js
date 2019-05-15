@@ -5,9 +5,9 @@ const router = require('express').Router();
 // DELETE
 router.post('/delete/:id', (req, res, next) => {
     model.User.findOneAndDelete({_id: mongoose.Schema.ObjectId(req.params.id)})
-    .then(function () {
+    .then(() => {
         res.send('OK');
-    }).catch(err => next(err))
+    }).catch(next)
 });
 
 module.exports = router;

@@ -1,6 +1,5 @@
-
 const mongoose = require('mongoose');
-const custom = require('../config/custom.js');
+const custom = require('../config/custom');
 
 // schema
 const ItemSchema = new mongoose.Schema({
@@ -9,7 +8,7 @@ const ItemSchema = new mongoose.Schema({
     providerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Provider', required: true},
     price: {type: Number, required: true},
 });
-ItemSchema.index({ name: 1, providerId: 1 }, { unique: true });
+ItemSchema.index({name: 1, providerId: 1}, {unique: true});
 
 // custom schema attributes
 ItemSchema.existing = 'item for provider';
@@ -17,8 +16,8 @@ ItemSchema.nonExisting = 'item';
 ItemSchema.nonExistingForProvider = 'item for provider';
 
 // custom static functions
-ItemSchema.statics.findForOrder = function(names, providerId) {
-    const query = { name : {$in : names}, providerId : providerId};
+ItemSchema.statics.findForOrder = (names, providerId) => {
+    const query = {name: {$in: names}, providerId: providerId};
 
     return this.find(query)
         .then((items) => {
@@ -30,5 +29,4 @@ ItemSchema.statics.findForOrder = function(names, providerId) {
 };
 
 // model creation
-mongoose.model('Item', ItemSchema);
-module.exports.Item = mongoose.model('Item');
+module.exports = mongoose.model('Item', ItemSchema);
