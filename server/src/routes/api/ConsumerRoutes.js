@@ -1,13 +1,11 @@
+const router = require('express').Router();
+const model = require('../../model');
 
-const model = require('../model');
-
-module.exports = function (app) {
-
-    // GET
-    app.get('/api/consumers', (req, res, next) => {
-        model.Consumer.find({})
+// GET
+router.get('/', (req, res, next) => {
+    model.Consumer.find({})
         .then(function (consumers) {
-            res.send(consumers.map( c => {
+            res.send(consumers.map(c => {
                 const consumer = {};
                 consumer.id = c._id;
                 consumer.username = c.username;
@@ -15,12 +13,12 @@ module.exports = function (app) {
                 return consumer;
             }));
         }).catch(err => next(err))
-    });
+});
 
-    // POST
-    app.post('/api/consumers', (req, res, next) => {
-        // check if location exists
-        model.Location.findOne({name: req.body.location})
+// POST
+router.post('/', (req, res, next) => {
+    // check if location exists
+    model.Location.findOne({name: req.body.location})
         .then(function (loc) {
             // create new consumer
             req.body.locationId = loc.id;
@@ -29,6 +27,6 @@ module.exports = function (app) {
         }).then(function (consumer) {
             return res.status(200).send(consumer.id);
         }).catch(err => next(err))
-    });
+});
 
-};
+module.exports = router;

@@ -11,16 +11,14 @@ app.use(function (req, res, next) {
     next();
 });
 
-// Routes
-require('./routes/LocationRoutes.js')(app);
-require('./routes/ConsumerRoutes.js')(app);
-require('./routes/ProviderRoutes.js')(app);
-require('./routes/UserRoutes.js')(app);
-require('./routes/ItemRoutes.js')(app);
-require('./routes/OrderRoutes.js')(app);
+// Load models
+require('./model');
 
 // Load passport configuration
 require('./config/passport.js');
+
+// Load routes
+app.use(require('./routes'));
 
 // Error handler
 app.use(function (err, req, res, next) {

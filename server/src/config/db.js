@@ -32,7 +32,7 @@ mongoose.plugin(function (schema) {
 
     // exception if not found on delete
     schema.post('findOneAndDelete', function (err, doc) {
-        if (!doc) { throw custom.Error.NonExisting(schema.nonExisting) }
+        if (err) { throw custom.Error.NonExisting(schema.nonExisting) }
     });
 });
 
