@@ -18,8 +18,8 @@ module.exports = function (app) {
             }
         }).then(function () {
             return model.Provider.find(filter)
-        }).then(function () {
-            res.send(data);
+        }).then((providers) => {
+            res.send(providers);
         }).catch(err => next(err));
     });
 

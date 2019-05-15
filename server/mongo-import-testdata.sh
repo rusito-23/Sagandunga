@@ -2,13 +2,13 @@
 
 
 # mongoimport <collection-name>
-# searches automatically into test_data/<collection_name>.json
+# searches automatically into data/<collection_name>.json
 mongoimportjson() {
     mongo Sagandunga --eval "db.$1.drop()"
     mongoimport --jsonArray \
                 --db Sagandunga \
                 --collection $1 \
-                --file test_data/$1.json  \
+                --file data/$1.json  \
                 --batchSize 1
 }
 

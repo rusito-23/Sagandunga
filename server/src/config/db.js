@@ -1,16 +1,13 @@
-/*
- * MONGOOSE DB SETUP
- * */
 const custom = require('./custom.js');
-
 const mongoose = require('mongoose');
 
 const dbCodes = {
     DUPLICATED_KEY: 11000,
 };
 
-// change validation exception for all schemas
 mongoose.plugin(function (schema) {
+
+    // custom error for obj validation exception
     schema.post('validate', function (err, doc, next) {
         if (err) {
             next(custom.Error.Malformed())
@@ -41,9 +38,7 @@ mongoose.plugin(function (schema) {
 
 const connect = function () {
     mongoose.Promise = global.Promise;
-    mongoose.connect('mongodb://localhost:27017/Sagandunga', { useNewUrlParser: true })
-        .then(() => console.log('Connected to DB'))
-        .catch(err => console.log(err))
+    return mongoose.connect('mongodb://localhost:27017/Sagandunga', { useNewUrlParser: true })
 };
 
 module.exports = {
