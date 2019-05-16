@@ -12,6 +12,7 @@ app.use((req, res, next) => {
 });
 
 // Load models
+db.plugin();
 require('./model');
 
 // Load passport configuration

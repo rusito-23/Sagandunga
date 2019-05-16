@@ -52,6 +52,7 @@ class CustomError extends Error {
 const validate = (req) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+        console.log(errors.array());
         throw CustomError.Malformed()
     }
 };
