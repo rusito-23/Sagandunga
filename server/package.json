@@ -5,7 +5,8 @@
     "scripts": {
         "mongo": "mongod --dbpath ../database --config mongod.conf > mongod.logs",
         "server": "nodemon src/app.js",
-        "load_data": "sh mongo-import-testdata.sh",
+        "importAll": "./mongo.sh importAll",
+        "dropAll": "./mongo.sh dropAll",
         "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
         "start": "concurrently --kill-others \"npm run mongo\" \"npm run server\""
     },

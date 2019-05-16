@@ -36,7 +36,7 @@ mongoimportjson() {
 # files must exists in database/
 importAll() {
     dropAll
-    for collection in $collections; do
+    for collection in "${collections[@]}"; do
         mongoimportjson $collection
     done
 }

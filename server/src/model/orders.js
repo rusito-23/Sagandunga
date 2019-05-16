@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Item = require('./items').Item;
+const Item = require('./items');
 
 // Schema
 const OrderSchema = new mongoose.Schema({
@@ -43,7 +43,7 @@ OrderSchema.statics.findByUser = (user) => {
 };
 
 // custom methods
-OrderSchema.methods.totalPrice = () => { return new Promise(((resolve, reject) => {
+OrderSchema.methods.totalPrice = function() { return new Promise(((resolve, reject) => {
     Item.find({_id: {$in: this.items.map(i => i.id)}})
         .then(items => {
             resolve( items

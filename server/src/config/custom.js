@@ -6,7 +6,7 @@ const status = {
     EXISTING: 405,
     MALFORMED: 400,
     NEGATIVE: 407,
-    NON_SUFFICIENT: 408,
+    NON_SUFFICIENT: 412,
     UNAUTH: 401,
     FORBIDDEN: 403,
 };

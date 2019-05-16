@@ -32,6 +32,7 @@ module.exports.create = (req, res, next) => {
         // create new provider
         req.body.locationId = loc.id;
         const provider = new model.Provider(req.body);
+        provider.setPassword(req.body.password);
         return provider.save();
     }).then((provider) => {
         res.send(provider.id);

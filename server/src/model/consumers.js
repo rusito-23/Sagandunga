@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('./users.js').User;
-const options = require('./users.js').options;
+const { User, options } = require('./users.js');
 
 // Schema
 const ConsumerSchema = new mongoose.Schema({}, options);
