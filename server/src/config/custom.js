@@ -1,4 +1,4 @@
-
+const { validationResult } = require('express-validator/check');
 // CUSTOM ERROR
 
 const status = {
@@ -49,6 +49,14 @@ class CustomError extends Error {
 
 }
 
+const validate = (req) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        throw CustomError.Malformed()
+    }
+};
+
 module.exports = {
     Error: CustomError,
+    validate: validate
 };

@@ -11,7 +11,7 @@ node_modules
 .idea
 
 # IGNORE DB
-data/
+database/
 
 # BUILD FILES
 server/dist

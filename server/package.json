@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "mongo": "mongod --dbpath ../data --config mongod.conf > mongod.logs",
+        "mongo": "mongod --dbpath ../database --config mongod.conf > mongod.logs",
         "server": "nodemon src/app.js",
         "load_data": "sh mongo-import-testdata.sh",
         "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",

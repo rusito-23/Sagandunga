@@ -24,10 +24,6 @@ mongoose.plugin((schema) => {
         if (!doc) { throw custom.Error.NonExisting(schema.nonExisting) }
     });
 
-    // exception if not found on delete
-    schema.post('findOneAndDelete', (err) => {
-        if (err) { throw custom.Error.NonExisting(schema.nonExisting) }
-    });
 });
 
 const connect = () => {
