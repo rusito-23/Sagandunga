@@ -6,11 +6,11 @@ router.get('/', (req, res, next) => {
     model.Consumer.find({})
     .then((consumers) => {
         res.send(consumers.map(c => {
-            const consumer = {};
-            consumer.id = c._id;
-            consumer.username = c.username;
-            consumer.locationId = c.locationId;
-            return consumer;
+            return {
+                id: c._id,
+                username: c.username,
+                locationId: c.locationId,
+            };
         }));
     }).catch(next)
 });

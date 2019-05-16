@@ -1,5 +1,7 @@
 const express = require('express');
-const db = require('./config/db.js');
+const validationResult = require('express-validator/check').validationResult;
+const db = require('./config/db');
+const custom = require('./config/custom');
 
 // Configuration
 const app = express();
@@ -11,11 +13,20 @@ app.use((req, res, next) => {
     next();
 });
 
+// Malformed entity check
+app.use((req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        throw custom.Error.Malformed()
+    }
+    next()
+});
+
 // Load models
 require('./model');
 
 // Load passport configuration
-require('./config/passport.js');
+require('./config/passport');
 
 // Load routes
 app.use(require('./routes'));

@@ -1,4 +1,4 @@
-const custom = require('./custom.js');
+const custom = require('./custom');
 const mongoose = require('mongoose');
 
 const dbCodes = {
