@@ -59,5 +59,6 @@ const validate = (req) => {
 
 module.exports = {
     Error: CustomError,
+    codes: status,
     validate: validate
 };

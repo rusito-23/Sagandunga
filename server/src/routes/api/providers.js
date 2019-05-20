@@ -1,11 +1,15 @@
 const router = require('express').Router();
 const providerController = require('../../controllers/providerController');
+const auth = require("../auth");
 
 // GET
-router.get('/', providerController.find);
+router.get('/',
+    auth.required,
+    providerController.find);
 
 // POST
 router.post('/',
+    auth.optional,
     providerController.validate.create,
     providerController.create);
 

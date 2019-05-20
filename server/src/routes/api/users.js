@@ -4,9 +4,13 @@ const userAuthController = require('../../controllers/userAuthController');
 const auth = require('../auth');
 
 // DELETE
-router.post('/delete/:id', userController.delete);
+router.post('/delete/:id',
+    auth.required,
+    userController.delete);
 
 // LOGIN
-router.post('/login', userAuthController.login);
+router.post('/login',
+    auth.optional,
+    userAuthController.login);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('./config/db');
+const { codes } = require("./config/custom");
 
 // Configuration
 const app = express();
@@ -25,6 +26,8 @@ app.use(require('./routes'));
 app.use((err, req, res, next) => {
     if (err.customError) {
         res.status(err.statusCode).send(err.message);
+    } else if (err.name === 'UnauthorizedError') {
+        res.status(codes.FORBIDDEN).send('Unauthorized');
     } else {
         console.error(err);
         res.status(500).send('Internal server error');
