@@ -5,14 +5,10 @@
     "scripts": {
         "mongo": "mongod --dbpath ../database --config mongod.conf > mongod.logs",
         "clean-mongo": "npm run mongo && npm run dropAll && npm run importAll",
-
         "server": "nodemon src/app.js",
-
         "importAll": "./mongo.sh importAll",
         "dropAll": "./mongo.sh dropAll",
-
         "start": "concurrently --kill-others \"npm run clean-mongo\" \"npm run server\"",
-
         "sanity": "npm run dropAll && newman run test/sanity.json"
     },
     "devDependencies": {
@@ -22,6 +18,7 @@
     },
     "dependencies": {
         "express": "^4.16.4",
+        "express-jwt": "^5.3.1",
         "express-validator": "^5.3.1",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.3.13",

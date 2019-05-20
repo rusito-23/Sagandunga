@@ -20,7 +20,7 @@ module.exports = (UserSchema) => {
     };
 
     UserSchema.methods.validatePassword = function(password) {
-        return encrypt(pass, this.salt) === password;
+        return encrypt(password, this.salt) === this.hash;
     };
 
     // Token
@@ -36,11 +36,11 @@ module.exports = (UserSchema) => {
         }, 'secret')
     };
 
-    // TODO: should I have this?
     UserSchema.methods.toAuthJSON = function() {
         return {
             _id: this._id,
             email: this.email,
+            username: this.username,
             token: this.generateJWT(),
         }
     }
