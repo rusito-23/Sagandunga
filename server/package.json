@@ -4,14 +4,20 @@
     "private": true,
     "scripts": {
         "mongo": "mongod --dbpath ../database --config mongod.conf > mongod.logs",
+        "clean-mongo": "npm run mongo && npm run dropAll && npm run importAll",
+
         "server": "nodemon src/app.js",
+
         "importAll": "./mongo.sh importAll",
         "dropAll": "./mongo.sh dropAll",
-        "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-        "start": "concurrently --kill-others \"npm run mongo\" \"npm run server\""
+
+        "start": "concurrently --kill-others \"npm run clean-mongo\" \"npm run server\"",
+
+        "sanity": "npm run dropAll && newman run test/sanity.json"
     },
     "devDependencies": {
         "concurrently": "^4.1.0",
+        "newman": "^4.5.0",
         "node": "^11.1.0"
     },
     "dependencies": {

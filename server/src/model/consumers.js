@@ -5,6 +5,7 @@ const { User, options } = require('./users.js');
 const ConsumerSchema = new mongoose.Schema({}, options);
 
 // custom attributes
+ConsumerSchema.name = 'Consumer';
 ConsumerSchema.existing = 'consumer';
 ConsumerSchema.nonExisting = 'consumer';
 

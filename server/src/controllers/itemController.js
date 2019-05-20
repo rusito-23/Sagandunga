@@ -37,11 +37,10 @@ module.exports.find = (req, res, next) => {
 module.exports.create = (req, res, next) => {
     validate(req);
     // check if provider exists
-    // TODO: check if item already exists for provider
     model.Provider.findOne({username: req.body.providerUsername})
-    .then((prov) => {
+    .then((provId) => {
         // create new item with given provider
-        req.body.providerId = prov.id;
+        req.body.providerId = provId;
         const item = new model.Item(req.body);
         // save item
         return item.save();

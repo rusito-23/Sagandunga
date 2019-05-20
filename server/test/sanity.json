@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "a19cc1ea-3082-4e07-805d-0c54a6b88f9b",
+		"name": "Sagandunga",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Location Cordoba",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5c16acd-53be-4aca-bc65-6bb619624f0d",
+						"exec": [
+							"",
+							"// check response code to be 200",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Cordoba\",\n\t\"coordX\": 234669,\n\t\"coordY\": 893466\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Location Cordoba Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5c16acd-53be-4aca-bc65-6bb619624f0d",
+						"exec": [
+							"",
+							"// check response to be for duplicated location name",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([405]);",
+							"    pm.expect(pm.response.text()).to.include(\"Existing location\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Cordoba\",\n\t\"coordX\": 450000,\n\t\"coordY\": 800000\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer rusito23",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b270a0bd-695e-42e0-9a9d-b83d068d728d",
+						"exec": [
+							"",
+							"// check res code to be 200",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"rusito23\",\n\t\"email\": \"i@a.com\",\n\t\"location\": \"Cordoba\",\n\t\"password\": \"PiLaR2307\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/consumers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"consumers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer rusito23 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b270a0bd-695e-42e0-9a9d-b83d068d728d",
+						"exec": [
+							"",
+							"// check res code to be Existing username",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([409]);",
+							"    pm.expect(pm.response.text()).to.include(\"Existing user\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"rusito23\",\n\t\"email\": \"i@a.com\",\n\t\"location\": \"Cordoba\",\n\t\"password\": \"OtRaPass609\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/consumers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"consumers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deposit 1000 for rusito23",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1503374-ccae-4c8e-84c4-e864a81f863c",
+						"exec": [
+							"",
+							"// check res code to be 200",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"rusito23\",\n\t\"amount\": 10000\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/consumers/deposit",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"consumers",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Provider Betos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e081da55-76b7-46f4-ada1-e401752095a4",
+						"exec": [
+							"",
+							"// check res code to be 200",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"betos23\",\n\t\"password\" : \"BeToS234669\",\n\t\"email\" : \"betos@betos.com\",\n\t\"location\" : \"Cordoba\",\n\t\"storeName\": \"Betos\",\n\t\"maxDeliveryDistance\": 100\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/providers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Provider Betos Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e081da55-76b7-46f4-ada1-e401752095a4",
+						"exec": [
+							"",
+							"// check res code to be Existing provider",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([409]);",
+							"    pm.expect(pm.response.text()).to.include(\"Existing user\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"betos23\",\n\t\"password\" : \"OtroPass2034\",\n\t\"email\" : \"betos@betos.com\",\n\t\"location\" : \"Cordoba\",\n\t\"storeName\": \"Betos\",\n\t\"maxDeliveryDistance\": 500\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/providers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Item Lomo Completo - Betos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5b7a9a1-dfff-42d9-bbce-016b8b48bab3",
+						"exec": [
+							"",
+							"// check res code to be 200",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Lomo Completo\",\n\t\"description\": \"Un lomo tranqui\",\n\t\"price\": 240,\n\t\"providerUsername\": \"betos23\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Item Mexicano - Betos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9497f63a-0d23-457c-a12e-1ebf6c86d1db",
+						"exec": [
+							"",
+							"// check res code to be 200",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Lomo Mexicano\",\n\t\"description\": \"Un lomo con morron\",\n\t\"price\": 300,\n\t\"providerUsername\": \"betos23\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order rusito23 - betos23",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "abf1ae0b-96e4-4729-a701-5cf929722294",
+						"exec": [
+							"",
+							"// check res code to be 200",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"providerUsername\": \"betos23\",\n\t\"consumerUsername\": \"rusito23\",\n\t\"items\" : [\n\t\t{\n\t\t\t\"name\": \"Lomo Completo\",\n\t\t\t\"amount\": 5\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Lomo Mexicano\",\n\t\t\t\"amount\": 1\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

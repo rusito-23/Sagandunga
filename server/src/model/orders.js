@@ -13,6 +13,7 @@ const OrderSchema = new mongoose.Schema({
 });
 
 // custom attributes
+OrderSchema.name = 'Order';
 OrderSchema.existing = 'order';
 OrderSchema.nonExisting = 'order';
 

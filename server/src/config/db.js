@@ -7,6 +7,7 @@ const dbCodes = {
 
 module.exports.plugin = () => {
     mongoose.plugin((schema) => {
+        if(schema.name) { console.log(`Setting plugin for collection -> ${schema.name}`); }
 
         // duplicate key error
         schema.post('save', (err, doc, next) => {

@@ -11,11 +11,14 @@ const ItemSchema = new mongoose.Schema({
 ItemSchema.index({name: 1, providerId: 1}, {unique: true});
 
 // custom schema attributes
+ItemSchema.name = 'Item';
 ItemSchema.existing = 'item for provider';
 ItemSchema.nonExisting = 'item';
 ItemSchema.nonExistingForProvider = 'item for provider';
 
 // custom static functions
+
+// return all items for provider, if they exist
 ItemSchema.statics.findForOrder = function(names, providerId) {
     const query = {name: {$in: names}, providerId: providerId};
 

@@ -8,6 +8,7 @@ const ProviderSchema = new mongoose.Schema({
 }, options);
 
 // custom attributes
+ProviderSchema.name = 'Provider';
 ProviderSchema.existing = 'provider';
 ProviderSchema.nonExisting = 'provider';
 

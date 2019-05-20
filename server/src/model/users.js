@@ -8,25 +8,21 @@ const options = {discriminatorKey: 'kind'};
 const UserSchema = new mongoose.Schema({
 
     // User attributes
-    username: {type: String, required: true},
+    username: {type: String, required: true, unique: true},
     balance: {type: Number, required: true, default: 0},
     locationId: {type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true},
 
     // Authentication
-    email: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
     hash: {type: String, required: true},
     salt: {type: String, required: true},
 
 }, options);
 
 // custom attributes
+UserSchema.name = 'user';
 UserSchema.existing = 'user';
 UserSchema.nonExisting = 'user';
-
-// username index as unique
-UserSchema.index({username: 1, email: 1}, {
-    unique: true,
-});
 
 // storeName unique for every provider
 UserSchema.index({storeName: 1}, {

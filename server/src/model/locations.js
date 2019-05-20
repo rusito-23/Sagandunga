@@ -8,6 +8,7 @@ const LocationSchema = new mongoose.Schema({
 });
 
 // custom attributes
+LocationSchema.name = 'Location';
 LocationSchema.existing = 'location';
 LocationSchema.nonExisting = 'location';
 
