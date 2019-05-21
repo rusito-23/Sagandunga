@@ -1,15 +1,22 @@
 .Home
-  text-align: center
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
 
-.Home-header
-  background-color: #282c34
+  background-color: #232c23
   min-height: 100vh
-  display: flex
-  flex-direction: column
-  align-items: center
   justify-content: center
+  text-align: center
   font-size: calc(10px + 2vmin)
   color: white
 
-.Home-link
-  color: #61dafb
+  display: grid
+  grid-gap: 10px
+  grid-template-columns: repeat(2, 1fr)
+
+.Home-img img
+  width: 100%
+  height: 100%
+  object-fit: cover
