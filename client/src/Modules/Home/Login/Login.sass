@@ -8,6 +8,7 @@
   align-items: center
   display: flex
   flex-direction: column
+  margin-right: 10px
 
 .Login-form input
   text-align: center
@@ -21,9 +22,30 @@
   color: white
   font-size: calc(2px + 2vmin)
   background-color: grey
-  margin: 4px 2px
-  padding: 4px 25px
   text-align: center
   text-decoration: none
   display: inline-block
 
+.Login-form-tabs
+  width: 100%
+  display: grid
+  grid-gap: 5px
+  grid-template-columns: repeat(2, 1fr)
+
+.Login-form-tabs button
+  background-color: inherit
+  float: left
+  border: none
+  outline: none
+  transition: 0.3s
+  width: 100%
+  border-top-left-radius: 10px
+  border-top-right-radius: 10px
+  margin-bottom: 0
+
+.Login-form-tabs button:hover
+  background-color: black
+
+.Login-form-child
+  width: 100%
+  background: black
