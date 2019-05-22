@@ -4,8 +4,8 @@ import RegisterProvider from './Provider'
 import RegisterConsumer from './Consumer'
 
 const states = {
-    CONSUMER: (<RegisterConsumer />),
-    PROVIDER: (<RegisterProvider />),
+    CONSUMER: (<RegisterConsumer/>),
+    PROVIDER: (<RegisterProvider/>),
 };
 
 export default class Register extends Component {
@@ -20,23 +20,23 @@ export default class Register extends Component {
     }
 
     registerConsumer = () => {
-        this.setState({ child: states.CONSUMER })
+        this.setState({child: states.CONSUMER})
     };
 
     registerProvider = () => {
-        this.setState({ child: states.PROVIDER })
+        this.setState({child: states.PROVIDER})
     };
 
     render() {
         return (
             <div className="Login-form">
-                <p> Register </p>
+                <h2> Register </h2>
                 <div className={"Login-form-tabs"}>
                     <button onClick={this.registerConsumer}>I am a consumer</button>
                     <button onClick={this.registerProvider}>I am a provider</button>
                 </div>
                 <div className={"Login-form-child"}>
-                    { this.state.child }
+                    {this.state.child}
                 </div>
             </div>
         );

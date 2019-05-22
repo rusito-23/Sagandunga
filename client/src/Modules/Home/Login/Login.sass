@@ -1,25 +1,20 @@
 
 .Login-form
-  background-color: #232c23
+  width: 100%
+  margin-right: 8px
   font-size: calc(13px + 2vmin)
-  color: white
-  text-align: center
-  align-content: center
-  align-items: center
-  display: flex
-  flex-direction: column
-  margin-right: 10px
+  display: grid
+  grid-gap: 10px
+  grid-template-columns: repeat(auto-fit, 1fr)
 
 .Login-form input
+  width: 100%
   text-align: center
-  color: white
   font-size: calc(2px + 2vmin)
-  background-color: grey
   margin-bottom: 16px
 
 .Login-form button
   border: none
-  color: white
   font-size: calc(2px + 2vmin)
   background-color: grey
   text-align: center
@@ -31,6 +26,7 @@
   display: grid
   grid-gap: 5px
   grid-template-columns: repeat(2, 1fr)
+  margin-bottom: 0
 
 .Login-form-tabs button
   background-color: inherit
@@ -45,6 +41,7 @@
 
 .Login-form-tabs button:hover
   background-color: black
+  color: white
 
 .Login-form-child
   width: 100%

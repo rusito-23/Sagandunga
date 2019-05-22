@@ -7,13 +7,14 @@ import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
 const states = {
     LOGIN: 1,
     REGISTER: 2,
-    switch: function(old) {
-        switch(old) {
+    switch: function (old) {
+        switch (old) {
             case this.LOGIN:
                 return this.REGISTER;
             case this.REGISTER:
                 return this.LOGIN;
-            default: break;
+            default:
+                break;
         }
     }
 };
@@ -32,18 +33,19 @@ export default class Home extends Component {
     }
 
     renderSwitch = () => {
-        switch(this.state.state) {
+        switch (this.state.state) {
             case states.LOGIN:
                 return {
-                    child: (<Login />),
+                    child: (<Login/>),
                     message: "Create a new account"
                 };
             case states.REGISTER:
                 return {
-                    child: (<Register />),
+                    child: (<Register/>),
                     message: "I already have an account"
                 };
-            default: break;
+            default:
+                break;
         }
     };
 
@@ -54,16 +56,18 @@ export default class Home extends Component {
     };
 
     render() {
-        const { child, message} = this.renderSwitch();
+        const {child, message} = this.renderSwitch();
         return (
-            <div className="Home">
-                <div className="Home-img">
-                    <img src={delicious_pizza} alt={"Delicious Pizza!"}/>
+            <div className={"Home"}>
+                <div className={"Home-column Home-img"}>
+                    <div className={"Home-title-cover"}>
+                        <img src={delicious_pizza} alt={"Delicious Pizza!"}/>
+                    </div>
+                    <h1>Sagandunga!</h1>
                 </div>
-                <div className="Home-login-register">
-                    { child }
-                    <button>Send</button>
-                    <p onClick={this.switchState} >{ message }</p>
+                <div className={"Home-column Home-login-register"}>
+                    {child}
+                    <p className={"Home-switch-message"} onClick={this.switchState}>{message}</p>
                 </div>
             </div>
         );
