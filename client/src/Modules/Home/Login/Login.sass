@@ -6,12 +6,14 @@
   display: grid
   grid-gap: 10px
   grid-template-columns: repeat(auto-fit, 1fr)
+  align-content: center
+  align-items: center
 
 .Login-form input
-  width: 100%
+  margin: 0 auto 16px
   text-align: center
+  width: 60%
   font-size: calc(2px + 2vmin)
-  margin-bottom: 16px
 
 .Login-form button
   border: none
@@ -19,14 +21,12 @@
   background-color: grey
   text-align: center
   text-decoration: none
-  display: inline-block
 
 .Login-form-tabs
   width: 100%
   display: grid
   grid-gap: 5px
   grid-template-columns: repeat(2, 1fr)
-  margin-bottom: 0
 
 .Login-form-tabs button
   background-color: inherit
@@ -37,7 +37,6 @@
   width: 100%
   border-top-left-radius: 10px
   border-top-right-radius: 10px
-  margin-bottom: 0
 
 .Login-form-tabs button:hover
   background-color: black

@@ -32,8 +32,8 @@ export default class Register extends Component {
             <div className="Login-form">
                 <h2> Register </h2>
                 <div className={"Login-form-tabs"}>
-                    <button onClick={this.registerConsumer}>I am a consumer</button>
-                    <button onClick={this.registerProvider}>I am a provider</button>
+                    <button onClick={this.registerConsumer}>Consumer</button>
+                    <button onClick={this.registerProvider}>Provider</button>
                 </div>
                 <div className={"Login-form-child"}>
                     {this.state.child}

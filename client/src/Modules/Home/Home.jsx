@@ -60,7 +60,7 @@ export default class Home extends Component {
         return (
             <div className={"Home"}>
                 <div className={"Home-column Home-img"}>
-                    <div className={"Home-title-cover"}>
+                    <div className={"Home-img-cover"}>
                         <img src={delicious_pizza} alt={"Delicious Pizza!"}/>
                     </div>
                     <h1>Sagandunga!</h1>
