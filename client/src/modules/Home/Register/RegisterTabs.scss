@@ -17,17 +17,22 @@
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       margin-bottom: 0;
+      padding: 8px;
+      font-size: calc(2px + 2vmin);
     }
 
-    button:hover {
+    button:hover, button.active {
       background-color: $primary;
       color: white;
     }
+
   }
 
   &-content {
     width: 100%;
     background: $primary;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
 }

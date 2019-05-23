@@ -1,29 +1,46 @@
 @import '../../assets/style/_colors.scss';
+@import '../../assets/style/_effects.scss';
 
 .Form {
-  color: white;
-  width: 100%;
-  margin-right: 8px;
-  font-size: calc(13px + 2vmin);
   display: grid;
   grid-column-gap: 10px;
   grid-template-columns: repeat(auto-fit, 1fr);
   align-content: center;
   align-items: center;
+  animation: customFadeEffect 1s;
+  border: 10px;
+  background-color: $primary;
+  color: white;
+
+  &-container {
+    width: 100%;
+  }
+
+  &-input-container {
+    margin: 32px auto;
+    width: 40%;
+  }
 
   input {
-    margin: 0 auto 16px;
+    margin: 0 16px;
     text-align: center;
-    width: 60%;
     font-size: calc(2px + 2vmin);
   }
 
   button {
     border: none;
-    font-size: calc(2px + 2vmin);
     background-color: $primary-back;
     text-align: center;
     text-decoration: none;
+  }
+
+  &-login {
+    border-radius: 10px;
+  }
+
+  &-register {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
 }

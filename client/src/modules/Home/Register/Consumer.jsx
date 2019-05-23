@@ -4,7 +4,7 @@ import '../Form.scss';
 export default class RegisterConsumer extends Component {
     render() {
         return (
-            <div className={'Form'}><p>CONSUMER</p></div>
+            <div className={'Form Form-register'}><p>CONSUMER</p></div>
         );
     }
 }
