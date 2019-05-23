@@ -3,6 +3,7 @@ import './RegisterTabs.scss';
 import '../Form.scss'
 import RegisterProvider from './Provider'
 import RegisterConsumer from './Consumer'
+import {Animated} from 'react-animated-css';
 
 const states = {
     CONSUMER: (<RegisterConsumer/>),
@@ -65,29 +66,31 @@ export default class Register extends Component {
 
     render() {
         return (
-            <div className={'Form-container'}>
-                <h2> Register </h2>
-                <div className={'Tabs-container'}>
-                    <button
-                        onMouseEnter={this.onHover}
-                        onMouseLeave={this.noHover}
-                        onClick={this.showConsumerRegister}
-                        className={this.isRegisterConsumerActive()}>
-                        Consumer
-                    </button>
+            <Animated animationIn={'slideInRight'} animationOut={'slideOutRight'}>
+                <div className={'Form-container'}>
+                    <h2> Register </h2>
+                    <div className={'Tabs-container'}>
+                        <button
+                            onMouseEnter={this.onHover}
+                            onMouseLeave={this.noHover}
+                            onClick={this.showConsumerRegister}
+                            className={this.isRegisterConsumerActive()}>
+                            Consumer
+                        </button>
 
-                    <button
-                        onMouseEnter={this.onHover}
-                        onMouseLeave={this.noHover}
-                        onClick={this.showRegisterProvider}
-                        className={this.isRegisterProviderActive()}>
-                        Provider
-                    </button>
+                        <button
+                            onMouseEnter={this.onHover}
+                            onMouseLeave={this.noHover}
+                            onClick={this.showRegisterProvider}
+                            className={this.isRegisterProviderActive()}>
+                            Provider
+                        </button>
+                    </div>
+                    <div className={'Tabs-content'}>
+                        {this.state.child}
+                    </div>
                 </div>
-                <div className={'Tabs-content'}>
-                    {this.state.child}
-                </div>
-            </div>
+            </Animated>
         );
     }
 }

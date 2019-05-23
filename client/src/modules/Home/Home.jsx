@@ -4,7 +4,6 @@ import Login from './Login/Login.jsx'
 import Register from './Register/Register.jsx'
 import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
 
-
 const states = {
     LOGIN: 1,
     REGISTER: 2,
@@ -59,7 +58,7 @@ export default class Home extends Component {
     render() {
         const {child, message} = this.renderSwitch();
         return (
-            <div className={'Home'} >
+            <div className={'Home'}>
                 <div className={'Home-column Home-img-cover'}>
                     <div className={'Home-img'}>
                         <img src={delicious_pizza} alt={'Delicious Pizza!'}/>
