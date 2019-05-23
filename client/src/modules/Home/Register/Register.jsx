@@ -36,7 +36,7 @@ export default class Register extends Component {
                     <button onClick={this.registerConsumer}>Consumer</button>
                     <button onClick={this.registerProvider}>Provider</button>
                 </div>
-                <div className={'Tab-content'}>
+                <div className={'Tabs-content'}>
                     {this.state.child}
                 </div>
             </div>

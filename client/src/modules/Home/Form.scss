@@ -1,3 +1,4 @@
+@import '../../assets/style/_colors.scss';
 
 .Form {
   color: white;
@@ -9,19 +10,22 @@
   grid-template-columns: repeat(auto-fit, 1fr);
   align-content: center;
   align-items: center;
+
+  input {
+    margin: 0 auto 16px;
+    text-align: center;
+    width: 60%;
+    font-size: calc(2px + 2vmin);
+  }
+
+  button {
+    border: none;
+    font-size: calc(2px + 2vmin);
+    background-color: $primary-back;
+    text-align: center;
+    text-decoration: none;
+  }
+
 }
 
-.Form input {
-  margin: 0 auto 16px;
-  text-align: center;
-  width: 60%;
-  font-size: calc(2px + 2vmin);
-}
 
-.Form button {
-  border: none;
-  font-size: calc(2px + 2vmin);
-  background-color: grey;
-  text-align: center;
-  text-decoration: none;
-}
