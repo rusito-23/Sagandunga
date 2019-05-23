@@ -5,8 +5,11 @@
   display: grid;
   grid-column-gap: 10px;
   grid-template-columns: repeat(auto-fit, 1fr);
+
+  text-align: center;
   align-content: center;
   align-items: center;
+
   animation: customFadeEffect 1s;
   border: 10px;
   background-color: $primary;
@@ -18,7 +21,12 @@
 
   &-input-container {
     margin: 32px auto;
-    width: 40%;
+    min-width: 60%;
+
+    input {
+      text-align: center;
+      font-size: calc(2px + 2vmin);
+    }
   }
 
   &-input-icon {
@@ -26,11 +34,6 @@
     float: right;
   }
 
-  input {
-    margin: 0 16px;
-    text-align: center;
-    font-size: calc(2px + 2vmin);
-  }
 
   button {
     border: none;
@@ -46,6 +49,7 @@
   &-register {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    min-height: 500px;
   }
 
 }

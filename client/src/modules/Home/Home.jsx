@@ -4,6 +4,7 @@ import Login from './Login/Login.jsx'
 import Register from './Register/Register.jsx'
 import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
 
+
 const states = {
     LOGIN: 1,
     REGISTER: 2,
