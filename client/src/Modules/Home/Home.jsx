@@ -59,8 +59,8 @@ export default class Home extends Component {
         const {child, message} = this.renderSwitch();
         return (
             <div className={"Home"}>
-                <div className={"Home-column Home-img"}>
-                    <div className={"Home-img-cover"}>
+                <div className={"Home-column Home-img-cover"}>
+                    <div className={"Home-img"}>
                         <img src={delicious_pizza} alt={"Delicious Pizza!"}/>
                     </div>
                     <h1>Sagandunga!</h1>

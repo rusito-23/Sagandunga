@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import '../Login.sass';
+import './RegisterTabs.sass';
+import '../Form.sass'
 import RegisterProvider from './Provider'
 import RegisterConsumer from './Consumer'
 
@@ -29,13 +30,13 @@ export default class Register extends Component {
 
     render() {
         return (
-            <div className="Login-form">
+            <div className={"Form"}>
                 <h2> Register </h2>
-                <div className={"Login-form-tabs"}>
+                <div className={"Tabs-container"}>
                     <button onClick={this.registerConsumer}>Consumer</button>
                     <button onClick={this.registerProvider}>Provider</button>
                 </div>
-                <div className={"Login-form-child"}>
+                <div className={"Tab-content"}>
                     {this.state.child}
                 </div>
             </div>

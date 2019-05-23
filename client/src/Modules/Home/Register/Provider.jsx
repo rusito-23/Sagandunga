@@ -4,7 +4,7 @@ import '../Form.sass'
 export default class RegisterProvider extends Component {
     render() {
         return (
-            <div className={"Register-form"}><p>PROVIDER</p></div>
+            <div className={"Form"}><p>PROVIDER</p></div>
         );
     }
 }
