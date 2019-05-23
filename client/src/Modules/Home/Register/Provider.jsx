@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Form.sass'
+import '../Form.sass'
 
 export default class RegisterProvider extends Component {
     render() {

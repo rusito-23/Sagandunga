@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Login.sass';
+import '../Login.sass';
 
 export default class Login extends Component {
     render() {

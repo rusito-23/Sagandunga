@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../Login/Login.sass';
+import '../Login.sass';
 import RegisterProvider from './Provider'
 import RegisterConsumer from './Consumer'
 

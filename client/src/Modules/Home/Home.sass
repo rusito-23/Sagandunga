@@ -1,53 +1,68 @@
 .Home
+  // position
   position: fixed
   top: 0
   left: 0
   right: 0
   bottom: 0
-
+  // sizes
   min-height: 100vh
-  justify-content: center
-  text-align: center
   font-size: calc(10px + 2vmin)
-
+  // layout
   display: grid
   grid-gap: 10px
-  grid-template-columns: repeat(10, 1fr)
+  grid-template-columns: repeat(7, 1fr)
 
 .Home-column
+  // alignment
+  justify-content: center
+  text-align: center
   align-items: center
+  // layout
   display: flex
   flex-direction: column
 
-//Home-img
-
 .Home-img
-  grid-column: span 7
+  // layout
+  grid-column: span 4
+  // color
   background-color: black
 
 .Home-img h1
+  // position
   position: absolute
   padding-top: 0
+  // color
   color: white
 
 .Home-img-cover
+  // sizes
   width: 100%
   height: 100%
+  // color
   opacity: .6
+  color: black
 
 .Home-img img
+  // sizes
   width: 100%
   height: 100%
+  // layout
   object-fit: cover
 
-//Home-login-register
-
 .Home-login-register
+  // sizes
+  height: 80%
   padding-right: 10px
   justify-content: center
   grid-column: span 3
 
 .Home-switch-message
-  font-size: calc(4px + 1vmin)
+  // sizes
+  font-size: calc(6px + 1vmin)
+  // position
+  position: fixed
+  bottom: 0
+  // colors
   cursor: pointer
   color: darkblue
