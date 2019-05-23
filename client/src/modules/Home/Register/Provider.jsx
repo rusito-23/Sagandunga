@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import '../Form.sass'
+import '../Form.scss'
 
 export default class RegisterProvider extends Component {
     render() {
         return (
-            <div className={"Form"}><p>PROVIDER</p></div>
+            <div className={'Form'}><p>PROVIDER</p></div>
         );
     }
 }

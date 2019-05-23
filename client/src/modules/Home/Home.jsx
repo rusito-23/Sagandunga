@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Home.sass';
+import './Home.scss';
 import Login from './Login/Login.jsx'
 import Register from './Register/Register.jsx'
 import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
@@ -37,12 +37,12 @@ export default class Home extends Component {
             case states.LOGIN:
                 return {
                     child: (<Login/>),
-                    message: "Create a new account"
+                    message: 'Create a new account'
                 };
             case states.REGISTER:
                 return {
                     child: (<Register/>),
-                    message: "I already have an account"
+                    message: 'I already have an account'
                 };
             default:
                 break;
@@ -58,16 +58,16 @@ export default class Home extends Component {
     render() {
         const {child, message} = this.renderSwitch();
         return (
-            <div className={"Home"}>
-                <div className={"Home-column Home-img-cover"}>
-                    <div className={"Home-img"}>
-                        <img src={delicious_pizza} alt={"Delicious Pizza!"}/>
+            <div className={'Home'} >
+                <div className={'Home-column Home-img-cover'}>
+                    <div className={'Home-img'}>
+                        <img src={delicious_pizza} alt={'Delicious Pizza!'}/>
                     </div>
                     <h1>Sagandunga!</h1>
                 </div>
-                <div className={"Home-column Home-login-register"}>
+                <div className={'Home-column Home-login-register'}>
                     {child}
-                    <p className={"Home-switch-message"} onClick={this.switchState}>{message}</p>
+                    <p className={'Home-switch-message'} onClick={this.switchState}>{message}</p>
                 </div>
             </div>
         );
