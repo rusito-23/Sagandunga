@@ -29,11 +29,13 @@ export default class Register extends Component {
     // State handling
 
     showConsumerRegister = () => {
-        this.setState({child: states.CONSUMER})
+        this.setState({child: states.CONSUMER});
+        this.props.changeRegisterForm('consumer');
     };
 
     showRegisterProvider = () => {
-        this.setState({child: states.PROVIDER})
+        this.setState({child: states.PROVIDER});
+        this.props.changeRegisterForm('provider');
     };
 
     // Class change depending on state

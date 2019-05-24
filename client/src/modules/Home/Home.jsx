@@ -26,11 +26,13 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
-            state: states.LOGIN
+            state: states.LOGIN,
+            register_form: 'consumer',
         };
 
         this.renderSwitch.bind(this);
         this.switchState.bind(this);
+        this.activeForm.bind(this);
     }
 
     renderSwitch = () => {
@@ -42,7 +44,7 @@ export default class Home extends Component {
                 };
             case states.REGISTER:
                 return {
-                    child: (<Register/>),
+                    child: (<Register changeRegisterForm={this.changeRegisterForm}/>),
                     message: 'I already have an account'
                 };
             default:
@@ -56,8 +58,26 @@ export default class Home extends Component {
         })
     };
 
+    activeForm = () => {
+        switch (this.state.state) {
+            case states.LOGIN:
+                return 'login';
+            case states.REGISTER:
+                return this.state.register_form;
+            default: break;
+        }
+    };
+
+    changeRegisterForm = (form) => {
+        this.setState({
+            register_form: form
+        })
+    };
+
     render() {
         const {child, message} = this.renderSwitch();
+        const active_form = this.activeForm();
+        console.log(`get active form: ${active_form}`);
         return (
             <div className={'Home'}>
                 <div className={'Home-column Home-img-cover'}>
@@ -68,7 +88,10 @@ export default class Home extends Component {
                 </div>
                 <div className={'Home-column Home-login-register'}>
                     {child}
-                    <button className={'Home-send-button'}>Send</button>
+
+                    <button className={'Home-send-button'}
+                            type={'submit'}
+                            form={this.activeForm()}>Send</button>
                     <p className={'Home-switch-message'} onClick={this.switchState}>{message}</p>
                 </div>
             </div>
