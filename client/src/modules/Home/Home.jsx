@@ -19,6 +19,7 @@ const states = {
     }
 };
 
+// TODO: check if logged in
 export default class Home extends Component {
 
     constructor(props) {
