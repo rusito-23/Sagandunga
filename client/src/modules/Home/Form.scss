@@ -31,6 +31,17 @@
       -moz-border-radius: 10px;
       border-radius: 10px;
     }
+
+    input[type='number'] {
+      -moz-appearance:textfield;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
     input::placeholder {
       color: $primary
     }
@@ -44,14 +55,6 @@
     &-two-rows {
       height: 100px;
     }
-  }
-
-
-  button {
-    border: none;
-    background-color: $primary-back;
-    text-align: center;
-    text-decoration: none;
   }
 
   &-login {

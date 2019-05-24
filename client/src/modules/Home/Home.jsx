@@ -67,6 +67,7 @@ export default class Home extends Component {
                 </div>
                 <div className={'Home-column Home-login-register'}>
                     {child}
+                    <button className={'Home-send-button'}>Send</button>
                     <p className={'Home-switch-message'} onClick={this.switchState}>{message}</p>
                 </div>
             </div>

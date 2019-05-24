@@ -66,6 +66,26 @@
     grid-column: span 3;
   }
 
+  &-send-button {
+    border: none;
+    background-color: $primary;
+    color: white;
+    font-size: calc(6px + 2vmin);
+    position: fixed;
+    bottom: 100px;
+    width: 10%;
+    height: 5%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.8s;
+  }
+  
+  &-send-button:hover {
+    background-image: linear-gradient($secondary, $primary);
+  }
+
   &-switch-message {
     // sizes
     font-size: calc(6px + 1vmin);
@@ -76,5 +96,6 @@
     cursor: pointer;
     color: darkblue
   }
+
 }
 
