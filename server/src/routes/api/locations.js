@@ -4,12 +4,12 @@ const auth = require("../auth");
 
 // GET
 router.get('/',
-    auth.required,
+    auth.optional,
     locationController.find);
 
 // POST
 router.post('/',
-    auth.required,
+    auth.optional,
     locationController.validate.create,
     locationController.create);
 

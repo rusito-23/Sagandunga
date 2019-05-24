@@ -76,8 +76,6 @@ export default class Home extends Component {
 
     render() {
         const {child, message} = this.renderSwitch();
-        const active_form = this.activeForm();
-        console.log(`get active form: ${active_form}`);
         return (
             <div className={'Home'}>
                 <div className={'Home-column Home-img-cover'}>

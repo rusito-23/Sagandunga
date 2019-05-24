@@ -3,6 +3,7 @@ import '../Form.scss';
 import {Animated} from 'react-animated-css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faKey} from "@fortawesome/fontawesome-free-solid";
+import axios from 'axios';
 
 export default class Login extends Component {
 
@@ -10,7 +11,8 @@ export default class Login extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            error: false
         };
     }
 
@@ -23,12 +25,16 @@ export default class Login extends Component {
     };
 
     handleSubmit = (event) => {
-        // TODO: axios!! and set the key in localStorage
-        console.log(`
-            Handling login with:
-                username: ${this.state.username}
-                password: ${this.state.password}
-        `);
+        axios.post('/users/login', {
+            user: {
+                auth: this.state.username,
+                password: this.state.password
+            }
+        }).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        });
         event.preventDefault()
     };
 
