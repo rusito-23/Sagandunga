@@ -3,10 +3,11 @@
 
 .Form {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+
   width: 500px;
+  align-items: stretch;
 
   animation: customFadeEffect 1s;
   background-color: $primary;
@@ -39,7 +40,12 @@
     display: inline-block;
     margin-right: 16px;
     float: left;
+
+    &-two-rows {
+      height: 100px;
+    }
   }
+
 
   button {
     border: none;

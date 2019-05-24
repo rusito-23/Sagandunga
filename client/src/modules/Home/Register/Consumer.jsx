@@ -20,7 +20,7 @@ export default class RegisterConsumer extends Component {
                     <FontAwesomeIcon icon={faEnvelope} className={'Form-input-icon'} />
                     <input type='mail' placeholder='Mail'       name='mail'     required/>
 
-                    <FontAwesomeIcon icon={faKey} className={'Form-input-icon'} />
+                    <FontAwesomeIcon icon={faKey} className={'Form-input-icon Form-input-icon-two-rows'} />
                     <input type='password' placeholder='Password'
                            name='password' required/>
                     <input type='password' placeholder='Repeat Password'

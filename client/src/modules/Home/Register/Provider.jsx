@@ -29,7 +29,7 @@ export default class RegisterProvider extends Component {
                     <input type='number' placeholder='Max delivery distance'
                            name='maxDeliveryDistance' required/>
 
-                    <FontAwesomeIcon icon={faKey} className={'Form-input-icon'} />
+                    <FontAwesomeIcon icon={faKey} className={'Form-input-icon Form-input-icon-two-rows'} />
                     <input type='password' placeholder='Password'
                            name='password' required/>
                     <input type='password' placeholder='Repeat Password'
