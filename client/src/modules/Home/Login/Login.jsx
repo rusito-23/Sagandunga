@@ -4,6 +4,7 @@ import {Animated} from 'react-animated-css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faKey} from "@fortawesome/fontawesome-free-solid";
 import axios from 'axios';
+import ErrorMessage from '../../../templates/ErrorMessages'
 
 export default class Login extends Component {
 
@@ -12,7 +13,7 @@ export default class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            error: false
+            loginError: false
         };
     }
 
@@ -31,9 +32,15 @@ export default class Login extends Component {
                 password: this.state.password
             }
         }).then(res => {
-            console.log(res)
+            console.log(res);
+            this.setState({
+                loginError: false
+            })
         }).catch(err => {
-            console.log(err)
+            console.log(err);
+            this.setState({
+                loginError: true
+            })
         });
         event.preventDefault()
     };
@@ -57,6 +64,10 @@ export default class Login extends Component {
                                        name='password' required
                                        onChange={this.handlePasswordChange}
                                 />
+
+                                <ErrorMessage
+                                    visible={this.state.loginError}
+                                    message={'Incorrect username or password'}/>
                             </form>
                         </div>
                     </div>

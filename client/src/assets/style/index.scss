@@ -38,4 +38,7 @@ h1 {
   color: $primary;
 }
 
-
+.error-message {
+  color: red;
+  font-size: calc(6px + 1vmin);
+}
