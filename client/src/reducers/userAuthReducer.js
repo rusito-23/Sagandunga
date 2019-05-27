@@ -1,9 +1,16 @@
 export default (state = {}, action) => {
-    if (action.type === 'LOGIN_ERROR') {
-        return {
-            ...state,
-            loginError: true
-        };
+    switch (action.type) {
+        case 'LOGIN_ERROR':
+            return {
+                ...state,
+                loginError: true
+            };
+        case 'USER_AUTH':
+            return {
+                ...state,
+                user: action.payload
+            };
+        default:
+            return state
     }
-    return state
 }

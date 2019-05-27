@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import '../Form.scss';
-import { Animated } from 'react-animated-css';
+import {Animated} from 'react-animated-css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faKey} from "@fortawesome/fontawesome-free-solid";
-import { ErrorMessage } from '../../../templates/ErrorMessages/ErrorMessages'
+import {ErrorMessage} from '../../../templates/ErrorMessages/ErrorMessages'
+import {PROFILE} from "../../../constants/appRoutes";
 
 export default class Login extends Component {
 
@@ -27,6 +28,9 @@ export default class Login extends Component {
     };
 
     render() {
+        if (this.props.user) {
+            this.props.history.push(PROFILE);
+        }
         return (
             <Animated animationIn={'slideInRight'} animationOut={'slideOutRight'}>
                 <div className={'Form-container'}>
