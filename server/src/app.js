@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('./config/db');
-const { codes } = require("./config/custom");
+const { codes } = require('./config/custom');
 
 // Configuration
 const app = express();
