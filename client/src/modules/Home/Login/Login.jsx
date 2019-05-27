@@ -3,7 +3,6 @@ import '../Form.scss';
 import { Animated } from 'react-animated-css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faKey} from "@fortawesome/fontawesome-free-solid";
-import axios from 'axios';
 import { ErrorMessage } from '../../../templates/ErrorMessages/ErrorMessages'
 
 export default class Login extends Component {
@@ -13,36 +12,18 @@ export default class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            loginError: false
         };
     }
 
-    handleUsernameChange = (event) => {
-        this.setState({username: event.target.value})
-    };
-
-    handlePasswordChange = (event) => {
-        this.setState({password: event.target.value})
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     };
 
     handleSubmit = (event) => {
-        axios.post('/users/login', {
-            user: {
-                auth: this.state.username,
-                password: this.state.password
-            }
-        }).then(res => {
-            console.log(res);
-            this.setState({
-                loginError: false
-            })
-        }).catch(err => {
-            console.log(err);
-            this.setState({
-                loginError: true
-            })
-        });
-        event.preventDefault()
+        event.preventDefault();
+        this.props.loginUser(this.state);
     };
 
     render() {
@@ -56,17 +37,17 @@ export default class Login extends Component {
                                 <FontAwesomeIcon icon={faUser} className={'Form-input-icon'}/>
                                 <input type='text' placeholder='Username'
                                        name='username' required
-                                       onChange={this.handleUsernameChange}
+                                       onChange={this.handleChange}
                                 />
 
                                 <FontAwesomeIcon icon={faKey} className={'Form-input-icon'}/>
                                 <input type='password' placeholder='Password'
                                        name='password' required
-                                       onChange={this.handlePasswordChange}
+                                       onChange={this.handleChange}
                                 />
 
                                 <ErrorMessage
-                                    visible={this.state.loginError}
+                                    visible={this.props.loginError}
                                     message={'Incorrect username or password'}/>
                             </form>
                         </div>
@@ -76,3 +57,4 @@ export default class Login extends Component {
         );
     }
 }
+

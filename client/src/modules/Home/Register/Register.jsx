@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './RegisterTabs.scss';
 import '../Form.scss'
-import RegisterProvider from './Provider'
-import RegisterConsumer from './Consumer'
+import RegisterProvider from './ProviderRegister/ProviderRegister'
+import RegisterConsumer from './ConsumerRegister/ConsumerRegister'
 import {Animated} from 'react-animated-css';
 
 const states = {

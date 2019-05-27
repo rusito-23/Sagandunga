@@ -1,10 +1,17 @@
 import React from 'react';
-import Main from './Main';
+import {Switch, Route} from 'react-router-dom';
+import Home from './modules/Home';
+import Profile from './modules/Profile/Profile';
+import { NotFound } from './templates/ErrorMessages/ErrorMessages';
 
 const App = () => (
-    <div>
-        <Main />
-    </div>
+    <main>
+        <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/profile' component={Profile} />
+            <Route path='*' component={NotFound} />
+        </Switch>
+    </main>
 );
 
 export default App;

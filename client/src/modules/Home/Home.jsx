@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Home.scss';
-import Login from './Login/Login.jsx'
+import Login from './Login'
 import Register from './Register/Register.jsx'
 import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
 
