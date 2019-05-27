@@ -1,0 +1,22 @@
+@import './colors';
+
+.Error-message {
+  color: red;
+  font-size: calc(6px + 1vmin);
+}
+
+.Error-redirect {
+  text-align: center;
+
+  h1 {
+    font-size: calc(100px + 2vmin);
+    color: $primary;
+  }
+
+  h2 {
+    font-size: calc(30px + 2vmin);
+    color: $secondary;
+  }
+
+}
+

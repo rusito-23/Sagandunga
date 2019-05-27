@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import '../Form.scss';
-import {Animated} from 'react-animated-css';
+import { Animated } from 'react-animated-css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faKey} from "@fortawesome/fontawesome-free-solid";
 import axios from 'axios';
-import ErrorMessage from '../../../templates/ErrorMessages'
+import { ErrorMessage } from '../../../templates/ErrorMessages/ErrorMessages'
 
 export default class Login extends Component {
 
