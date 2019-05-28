@@ -43,7 +43,7 @@ export default class Navbar extends Component {
                         </a>
                     </div>
                     <div className={'Nav-bar-links-item'}>
-                        <a onClick={this.userLogout}>
+                        <a href={'/'} onClick={this.userLogout}>
                             <FontAwesomeIcon icon={faUnlink} className={'Nav-bar-links-item-icon'} />
                             Logout
                         </a>

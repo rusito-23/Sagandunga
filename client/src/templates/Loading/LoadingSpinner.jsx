@@ -3,9 +3,9 @@ import './Loading.scss';
 
 export default () => {
     return (
-        <div className="spinner">
-            <div className="double-bounce1"/>
-            <div className="double-bounce2"/>
+        <div className="Spinner">
+            <div className="Spinner-double-bounce-first"/>
+            <div className="Spinner-double-bounce-second"/>
         </div>
     )
 }

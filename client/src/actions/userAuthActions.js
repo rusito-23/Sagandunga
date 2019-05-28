@@ -2,6 +2,7 @@ import axios from 'axios/index';
 import {LOGIN_ERROR, USER_AUTH} from '../constants/actionTypes';
 import {LOGIN} from '../constants/apiRoutes';
 import {HOME, PROFILE} from '../constants/appRoutes';
+import {removeUserLS, setUserLS} from '../utils/userStorageUtil';
 
 export const userLogin = (state, history) => {
     return dispatch => {
@@ -12,7 +13,7 @@ export const userLogin = (state, history) => {
                     password: state.password
                 }
         }).then(res => {
-            localStorage.setItem(USER_AUTH, res.data.user);
+            setUserLS(res.data.user);
             dispatch({
                 type: USER_AUTH,
                 payload: res.data.user,
@@ -28,7 +29,7 @@ export const userLogin = (state, history) => {
 
 export const userLogout = (hist) => {
     return () => {
-        localStorage.removeItem(USER_AUTH);
+        removeUserLS();
         hist.push(HOME);
     }
 };

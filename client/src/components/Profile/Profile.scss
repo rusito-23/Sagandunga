@@ -1,0 +1,44 @@
+@import '../../assets/style/colors';
+
+.Profile {
+
+  text-align: center;
+
+  &-container {
+    width: 50%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: $primary;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    min-height: 200px;
+    color: white;
+    font-size: calc(15px + 1vmin);
+    padding: 20px;
+
+    display: grid;
+  }
+
+  &-item {
+    margin: 30px 80px 30px 80px;
+
+    &-left {
+      float: left;
+
+      &-icon {
+        display: inline-block;
+        margin-right: 20px;
+        float: left;
+      }
+
+    }
+
+    &-right {
+      float: right;
+      color: $secondary;
+    }
+
+  }
+
+}

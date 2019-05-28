@@ -6,16 +6,16 @@ import AppContainer from './AppContainer';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import {NotFound} from './templates/Messages/ErrorMessages';
-import {USER_AUTH} from './constants/actionTypes';
 import {
     HOME, PROFILE
 } from './constants/appRoutes';
 import Navbar from './templates/Nav';
+import {getUserLS} from './utils/userStorageUtil';
 
 
 function PrivateRoute({component: Component, ...rest}) {
     const next = (props) => (
-        localStorage.getItem(USER_AUTH)
+        getUserLS()
             ? <Component {...props} />
             : <Redirect to={HOME}/> );
 
@@ -30,7 +30,7 @@ function PrivateRoute({component: Component, ...rest}) {
 
 function PublicRoute({component: Component, ...rest}) {
     const next = (props) => (
-        !localStorage.getItem(USER_AUTH)
+        !getUserLS()
             ? <Component {...props} />
             : <Redirect to={PROFILE}/> );
 
