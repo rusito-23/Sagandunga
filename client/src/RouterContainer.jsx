@@ -1,20 +1,34 @@
 import React from 'react';
 import {ConnectedRouter} from 'connected-react-router';
-import {Route, Switch} from 'react-router';
+import {Redirect, Route, Switch} from 'react-router';
 import {LocalizeProvider} from 'react-localize-redux';
-
-// App Components
 import AppContainer from './AppContainer';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import {NotFound} from './templates/ErrorMessages/ErrorMessages';
-import {PrivateRoute, PublicRoute} from './PrivateRouterContainer';
-
-// App Constants
+import {USER_AUTH} from './constants/actionTypes';
 import {
     HOME, PROFILE
 } from './constants/appRoutes';
 
+
+function PrivateRoute({component: Component, ...rest}) {
+    const next = (props) => (
+        localStorage.getItem(USER_AUTH)
+            ? <Component {...props} />
+            : <Redirect to={HOME}/> );
+
+    return (<Route {...rest} render={next}/>)
+}
+
+function PublicRoute({component: Component, ...rest}) {
+    const next = (props) => (
+        !localStorage.getItem(USER_AUTH)
+            ? <Component {...props} />
+            : <Redirect to={PROFILE}/> );
+
+    return (<Route {...rest} render={next}/>)
+}
 
 export default function RouterContainer({history}) {
     return (
