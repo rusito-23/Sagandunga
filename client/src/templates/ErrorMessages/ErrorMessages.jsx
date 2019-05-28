@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/style/_error_style.scss';
+import './_error_style.scss';
 import ColBurger from '../../assets/img/colburger.png';
 
 // Generic Error Message
