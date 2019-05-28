@@ -18,7 +18,7 @@ const NotFound = () => (
     <div className={'Messages-redirect-error'}>
         <h1>Oops! Sorry!</h1>
         <h2>The page you are looking for does not exist!</h2>
-        <h3>Please stop messing with the paths, dumbass.</h3>
+        <h3>Stop messing with the paths, dumbass.</h3>
         <img src={ColBurger} alt={'Crying Burger :P'} />
     </div>
 );

@@ -30,23 +30,23 @@
     grid-column: span 4;
     // color
     background-color: black;
-  }
 
-  &-img-cover h1 {
-    // position
-    position: fixed;
-    top: 10%;
-    // color
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  }
+    h1 {
+      // position
+      position: fixed;
+      top: 10%;
+      // color
+      color: white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
 
-  &-img-cover img {
-    // sizes
-    width: 100%;
-    height: 100%;
-    // layout
-    object-fit: cover;
+    img {
+      // sizes
+      width: 100%;
+      height: 100%;
+      // layout
+      object-fit: cover;
+    }
   }
 
   &-img {

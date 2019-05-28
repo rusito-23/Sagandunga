@@ -10,7 +10,7 @@ import {USER_AUTH} from './constants/actionTypes';
 import {
     HOME, PROFILE
 } from './constants/appRoutes';
-import Navbar from './templates/Nav/Navbar';
+import Navbar from './templates/Nav';
 
 
 function PrivateRoute({component: Component, ...rest}) {

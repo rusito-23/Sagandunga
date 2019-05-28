@@ -8,6 +8,10 @@ import {
 
 export default class Navbar extends Component {
 
+    userLogout = () => {
+        this.props.userLogout(this.props.history)
+    };
+
     render() {
         return (
             <div className={'Nav-bar'}>
@@ -27,19 +31,19 @@ export default class Navbar extends Component {
 
                 <div className={'Nav-bar-links'}>
                     <div className={'Nav-bar-links-item'}>
+                        <a href={'/home'}>
+                            <FontAwesomeIcon icon={faHome} className={'Nav-bar-links-item-icon'} />
+                            Home
+                        </a>
+                    </div>
+                    <div className={'Nav-bar-links-item'}>
                         <a href={'/profile'}>
                             <FontAwesomeIcon icon={faUser} className={'Nav-bar-links-item-icon'} />
                             Profile
                         </a>
                     </div>
                     <div className={'Nav-bar-links-item'}>
-                        <a href={'/profile'}>
-                            <FontAwesomeIcon icon={faHome} className={'Nav-bar-links-item-icon'} />
-                            Home
-                        </a>
-                    </div>
-                    <div className={'Nav-bar-links-item'}>
-                        <a href={'#'}>
+                        <a onClick={this.userLogout}>
                             <FontAwesomeIcon icon={faUnlink} className={'Nav-bar-links-item-icon'} />
                             Logout
                         </a>
@@ -47,7 +51,6 @@ export default class Navbar extends Component {
                 </div>
 
             </div>
-
         )
     }
 

@@ -1,10 +1,5 @@
 import Profile from './Profile';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
-import {userLogout} from '../../actions/userAuthActions';
 
-const mapDispatchToProps = dispatch => ({
-    userLogout: history => dispatch(userLogout(history)),
-});
-
-export default withRouter(connect(null, mapDispatchToProps)(Profile))
+export default withRouter(connect(null, null)(Profile))
