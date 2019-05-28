@@ -3,7 +3,7 @@ import '../Form.scss';
 import {Animated} from 'react-animated-css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faKey} from "@fortawesome/fontawesome-free-solid";
-import {ErrorMessage} from '../../../templates/ErrorMessages/ErrorMessages'
+import {ErrorMessage} from '../../../templates/Messages/ErrorMessages'
 
 export default class Login extends Component {
 

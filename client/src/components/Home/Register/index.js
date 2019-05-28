@@ -6,7 +6,7 @@ import {withRouter} from 'react-router';
 const mapStateToProps = (state) => {
     return {
         locationsError: state.locationsReducer.locationsError,
-        locationLoading: state.locationsReducer.locationLoading
+        locationLoading: state.locationsReducer.locationLoading,
     }
 };
 

@@ -1,11 +1,18 @@
 import ProviderRegister from './ProviderRegister';
 import {connect} from 'react-redux';
+import {providerRegister} from '../../../../actions/registerActions';
+import {withRouter} from 'react-router';
 
 const mapStateToProps = (state) => {
     return {
-        locationsError: state.locationsReducer.locationsError,
-        locations: state.locationsReducer.locations
+        locations: state.locationsReducer.locations,
+        registrationError: state.registerReducer.registrationError,
+        registrationErrorMessage: state.registerReducer.registrationErrorMessage
     }
 };
 
-export default connect(mapStateToProps, null)(ProviderRegister)
+const mapDispatchToProps = dispatch => ({
+    providerRegister: (state, history) => dispatch(providerRegister(state, history)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProviderRegister))

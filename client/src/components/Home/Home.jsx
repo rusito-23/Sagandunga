@@ -3,6 +3,7 @@ import './Home.scss';
 import Login from './Login'
 import Register from './Register'
 import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
+import {SuccessMessage} from '../../templates/Messages/SuccessMessages';
 
 const states = {
     LOGIN: 1,
@@ -25,7 +26,7 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
-            state: states.REGISTER,
+            state: states.LOGIN,
             register_form: 'consumer',
         };
 
@@ -85,6 +86,10 @@ export default class Home extends Component {
                 </div>
                 <div className={'Home-column Home-login-register'}>
                     {child}
+
+                    <SuccessMessage
+                        visible={this.props.registrationSuccess}
+                        message={'Registration successfull!'} />
 
                     <button className={'Home-send-button'}
                             type={'submit'}

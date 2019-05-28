@@ -1,0 +1,38 @@
+@import '../../assets/style/colors';
+
+.Messages {
+
+  &-success {
+    color: blue;
+    font-size: calc(10px + 1vmin);
+    margin: 20px;
+  }
+
+  &-error {
+    color: red;
+    font-size: calc(8px + 1vmin);
+    margin: 20px;
+  }
+
+  &-redirect-error {
+    text-align: center;
+
+    h1 {
+      font-size: calc(100px + 2vmin);
+      color: $primary;
+    }
+
+    h2 {
+      font-size: calc(30px + 2vmin);
+      color: $secondary;
+    }
+
+    h3 {
+      font-size: calc(20px + 1vmin);
+      color: $secondary;
+    }
+
+  }
+
+}
+

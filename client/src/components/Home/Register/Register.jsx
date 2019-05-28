@@ -5,7 +5,7 @@ import RegisterProvider from './ProviderRegister'
 import RegisterConsumer from './ConsumerRegister'
 import {Animated} from 'react-animated-css';
 import LoadingSpinner from '../../../templates/Loading/LoadingSpinner';
-import {ErrorMessage} from '../../../templates/ErrorMessages/ErrorMessages';
+import {ErrorMessage} from '../../../templates/Messages/ErrorMessages';
 
 const states = {
     CONSUMER: (<RegisterConsumer/>),
@@ -67,10 +67,13 @@ export default class Register extends Component {
     };
 
     render() {
+        // error handling
         if (this.props.locationLoading) { return <LoadingSpinner /> }
         else if(this.props.locationsError) { return <ErrorMessage
             visible={true}
             message={'No locations were found'} /> }
+
+        // render
         return (
             <Animated animationIn={'slideInRight'} animationOut={'slideOutRight'}>
                 <div className={'Form-container'}>

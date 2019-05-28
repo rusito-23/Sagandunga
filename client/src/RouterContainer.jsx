@@ -5,7 +5,7 @@ import {LocalizeProvider} from 'react-localize-redux';
 import AppContainer from './AppContainer';
 import Home from './components/Home';
 import Profile from './components/Profile';
-import {NotFound} from './templates/ErrorMessages/ErrorMessages';
+import {NotFound} from './templates/Messages/ErrorMessages';
 import {USER_AUTH} from './constants/actionTypes';
 import {
     HOME, PROFILE

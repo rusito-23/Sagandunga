@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../../Form.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Dropdown from '../../../../templates/Dropdown/Dropdown';
+import {ErrorMessage} from '../../../../templates/Messages/ErrorMessages';
 import
 {
     faUser,
@@ -16,7 +17,7 @@ export default class RegisterConsumer extends Component {
         super(props);
         this.state = {
             username: '',
-            mail: '',
+            email: '',
             password: '',
             location: this.props.locations[0].value
         };
@@ -25,7 +26,6 @@ export default class RegisterConsumer extends Component {
     }
 
     handleChange = (event) => {
-        console.log(event.target.name);
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -33,7 +33,11 @@ export default class RegisterConsumer extends Component {
 
     handleSubmit = (event) => {
         console.log(this.state);
-        event.preventDefault()
+        event.preventDefault();
+        this.props.consumerRegister(
+            this.state,
+            this.props.history
+        )
     };
 
     render() {
@@ -41,6 +45,10 @@ export default class RegisterConsumer extends Component {
             <div className={'Form Form-register'}>
                 <div className={'Form-input-container'}>
                     <form id={'consumer'} onSubmit={this.handleSubmit}>
+                        <ErrorMessage
+                            visible={this.props.registrationError}
+                            message={this.props.registrationErrorMessage} />
+
                         <FontAwesomeIcon icon={faUser} className={'Form-input-icon'}/>
                         <input type='text' placeholder='Username'
                                name='username' required
@@ -48,8 +56,8 @@ export default class RegisterConsumer extends Component {
                         />
 
                         <FontAwesomeIcon icon={faEnvelope} className={'Form-input-icon'}/>
-                        <input type='mail' placeholder='Mail'
-                               name='mail' required
+                        <input type='email' placeholder='Email'
+                               name='email' required
                                onChange={this.handleChange}
                         />
 

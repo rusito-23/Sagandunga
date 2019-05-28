@@ -10,9 +10,8 @@ export default class Profile extends Component {
     };
 
     render() {
-        console.log('rendering Profile');
         return (
-            <div className={'Home'}>
+            <div className={'Profile'}>
                 <h1>Profile</h1>
                 <button onClick={this.onClickLogout}>Logout</button>
             </div>
