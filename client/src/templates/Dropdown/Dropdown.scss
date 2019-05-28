@@ -1,0 +1,14 @@
+@import '../../assets/style/_colors.scss';
+
+.Dropdown {
+  width: 85%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  // center text
+  padding: 0 !important;
+  padding-left: 30% !important;
+  color: $primary !important;
+
+}

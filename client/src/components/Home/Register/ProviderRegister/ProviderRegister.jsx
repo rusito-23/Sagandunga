@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import '../../Form.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Dropdown from '../../../../templates/Dropdown/Dropdown';
 import
 {
     faUser,
     faEnvelope,
     faStore,
     faMap,
-    faKey,
-} from "@fortawesome/fontawesome-free-solid";
+    faKey, faLocationArrow,
+} from '@fortawesome/fontawesome-free-solid';
 
 export default class RegisterProvider extends Component {
 
@@ -19,7 +20,8 @@ export default class RegisterProvider extends Component {
             mail: '',
             storeName: '',
             maxDeliveryDistance: 0,
-            password: ''
+            password: '',
+            location: this.props.locations[0].value
         };
         this.handleChange.bind(this);
         this.handleSubmit.bind(this);
@@ -32,13 +34,7 @@ export default class RegisterProvider extends Component {
     };
 
     handleSubmit = (event) => {
-        // TODO: axios!!
-        console.log(`
-            Handling login with:
-                username: ${this.state.username}
-                storeName: ${this.state.storeName}
-                password: ${this.state.password}
-        `);
+        console.log(this.state);
         event.preventDefault()
     };
 
@@ -79,6 +75,13 @@ export default class RegisterProvider extends Component {
                         />
                         <input type='password' placeholder='Repeat Password'
                                name='password_repeat' required/>
+
+                        <FontAwesomeIcon icon={faLocationArrow} className={'Form-input-icon'}/>
+                        <Dropdown
+                            onChange={this.handleChange}
+                            name={'location'}
+                            options={this.props.locations}
+                        />
                     </form>
                 </div>
             </div>

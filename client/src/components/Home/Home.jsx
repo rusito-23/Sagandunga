@@ -19,14 +19,13 @@ const states = {
     }
 };
 
-// TODO: check if logged in
 export default class Home extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            state: states.LOGIN,
+            state: states.REGISTER,
             register_form: 'consumer',
         };
 

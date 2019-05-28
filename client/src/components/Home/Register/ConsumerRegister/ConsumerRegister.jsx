@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import '../../Form.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Dropdown from '../../../../templates/Dropdown/Dropdown';
 import
 {
     faUser,
     faEnvelope,
     faKey,
+    faLocationArrow,
 } from "@fortawesome/fontawesome-free-solid";
 
 export default class RegisterConsumer extends Component {
@@ -15,25 +17,22 @@ export default class RegisterConsumer extends Component {
         this.state = {
             username: '',
             mail: '',
-            password: ''
+            password: '',
+            location: this.props.locations[0].value
         };
         this.handleChange.bind(this);
         this.handleSubmit.bind(this);
     }
 
     handleChange = (event) => {
+        console.log(event.target.name);
         this.setState({
             [event.target.name]: event.target.value
         })
     };
 
     handleSubmit = (event) => {
-        // TODO: axios!!
-        console.log(`
-            Handling consumer register with:
-                username: ${this.state.username}
-                password: ${this.state.password}
-        `);
+        console.log(this.state);
         event.preventDefault()
     };
 
@@ -61,10 +60,16 @@ export default class RegisterConsumer extends Component {
                         />
                         <input type='password' placeholder='Repeat Password'
                                name='password_repeat' required/>
+
+                        <FontAwesomeIcon icon={faLocationArrow} className={'Form-input-icon'}/>
+                        <Dropdown
+                            onChange={this.handleChange}
+                            name={'location'}
+                            options={this.props.locations}
+                        />
                     </form>
                 </div>
             </div>
         );
-        // TODO: location dropdown
     }
 }
