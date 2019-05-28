@@ -11,7 +11,7 @@ export const userLogin = (state, history) => {
                     auth: state.username,
                     password: state.password
                 }
-            }).then(res => {
+        }).then(res => {
             localStorage.setItem(USER_AUTH, res.data.user);
             dispatch({
                 type: USER_AUTH,

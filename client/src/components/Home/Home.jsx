@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Home.scss';
 import Login from './Login'
-import Register from './Register/Register.jsx'
+import Register from './Register'
 import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
 
 const states = {

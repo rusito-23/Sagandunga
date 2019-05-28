@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './RegisterTabs.scss';
 import '../Form.scss'
-import RegisterProvider from './ProviderRegister/ProviderRegister'
-import RegisterConsumer from './ConsumerRegister/ConsumerRegister'
+import RegisterProvider from './ProviderRegister'
+import RegisterConsumer from './ConsumerRegister'
 import {Animated} from 'react-animated-css';
+import LoadingSpinner from '../../../templates/Loading/LoadingSpinner';
 
 const states = {
     CONSUMER: (<RegisterConsumer/>),
@@ -16,14 +17,12 @@ export default class Register extends Component {
         super(props);
         this.state = {
             child: states.CONSUMER,
-            hover: false,
+            hover: false
         };
-        this.showConsumerRegister.bind(this);
-        this.showRegisterProvider.bind(this);
-        this.isRegisterConsumerActive.bind(this);
-        this.isRegisterProviderActive.bind(this);
-        this.onHover.bind(this);
-        this.noHover.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.getLocations();
     }
 
     // State handling
@@ -67,6 +66,7 @@ export default class Register extends Component {
     };
 
     render() {
+        if (this.props.locationLoading) { return <LoadingSpinner /> }
         return (
             <Animated animationIn={'slideInRight'} animationOut={'slideOutRight'}>
                 <div className={'Form-container'}>

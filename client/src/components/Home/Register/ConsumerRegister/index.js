@@ -1,4 +1,11 @@
 import ConsumerRegister from './ConsumerRegister';
 import {connect} from 'react-redux';
 
-export default connect(null, null)(ConsumerRegister)
+const mapStateToProps = (state) => {
+    return {
+        locationsError: state.locationsReducer.locationsError,
+        locations: state.locationsReducer.locations
+    }
+};
+
+export default connect(mapStateToProps, null)(ConsumerRegister)
