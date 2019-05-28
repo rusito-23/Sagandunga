@@ -1,0 +1,116 @@
+@import '../../assets/style/colors';
+
+.Nav {
+
+  &-bar {
+    height: 50px;
+    width: 100%;
+    background-color: $primary;
+    position: relative;
+    padding: 0;
+
+    &-header {
+      display: inline;
+
+      &-title {
+        position: absolute;
+        display: inline-block;
+        font-size: calc(20px + 1vmin);
+        color: $secondary-back;
+        padding: 10px 10px 10px 10px;
+      }
+
+    }
+
+    img {
+      position: relative;
+      max-height: 40px;
+      max-width: 40px;
+      padding-left: 5px;
+      padding-top: 5px;
+    }
+
+    &-links {
+      display: inline;
+      float: right;
+
+      &-item {
+        display: inline-block;
+        padding: 13px 10px 13px 10px;
+        margin-bottom: 0;
+
+        a {
+          text-decoration: none;
+          color: $secondary-back;
+        }
+
+        &-icon {
+          margin-right: 8px;
+        }
+
+      }
+
+      &-item:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    &-btn, &-check {
+      display: none
+    }
+
+    @media (max-width: 600px) {
+      &-btn {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      &-btn > label {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+      }
+
+      &-btn > label:hover, #Nav-bar-check:checked ~ &-btn > label {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      &-btn > label > span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 2px solid #eee;
+      }
+
+      &-links {
+        position: absolute;
+        display: block;
+        width: 100%;
+        background-color: #333;
+        height: 0;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 50px;
+        left: 0;
+      }
+
+      &-links > a {
+        display: block;
+        width: 100%;
+      }
+
+      // TODO: this ain't working, make it a onClick in React side!
+      #Nav-bar-check:not(:checked) ~ &-links {
+        height: 0;
+      }
+      #Nav-bar-check:checked ~ &-links {
+        height: calc(100vh - 50px);
+        overflow-y: auto;
+      }
+    }
+
+  }
+
+}

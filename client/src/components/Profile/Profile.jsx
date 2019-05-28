@@ -11,8 +11,8 @@ export default class Profile extends Component {
 
     render() {
         return (
-            <div className={'Profile'}>
-                <h1>Profile</h1>
+            <div className={'Profile'} align={'center'}>
+                <h2>Profile</h2>
                 <button onClick={this.onClickLogout}>Logout</button>
             </div>
         );

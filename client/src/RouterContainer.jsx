@@ -10,6 +10,7 @@ import {USER_AUTH} from './constants/actionTypes';
 import {
     HOME, PROFILE
 } from './constants/appRoutes';
+import Navbar from './templates/Nav/Navbar';
 
 
 function PrivateRoute({component: Component, ...rest}) {
@@ -18,7 +19,13 @@ function PrivateRoute({component: Component, ...rest}) {
             ? <Component {...props} />
             : <Redirect to={HOME}/> );
 
-    return (<Route {...rest} render={next}/>)
+    return (
+        <div>
+            <Navbar />
+            <Route {...rest} render={next}/>
+            {/*// TODO: footer*/}
+        </div>
+    )
 }
 
 function PublicRoute({component: Component, ...rest}) {
