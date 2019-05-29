@@ -1,0 +1,6 @@
+
+@mixin full-rounded-borders($border) {
+  -webkit-border-radius: $border;
+  -moz-border-radius: $border;
+  border-radius: $border;
+}

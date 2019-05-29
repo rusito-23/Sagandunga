@@ -1,4 +1,5 @@
 @import '../../assets/style/colors';
+@import '../../assets/style/_mixins';
 
 .Profile {
 
@@ -39,6 +40,31 @@
       color: $secondary;
     }
 
+  }
+
+  &-button-down {
+    cursor: pointer;
+  }
+
+  &-button {
+    @include full-rounded-borders(10px);
+    background: none;
+    border: black;
+    outline: inherit;
+    padding: 20px;
+    font: inherit;
+    cursor: pointer;
+    color: $primary-back;
+    font-size: calc(10px + 1vmin);
+  }
+
+  &-button:hover {
+    background: $primary-back;
+    color: $primary;
+  }
+
+  &-button-delete:hover {
+    color: darkred;
   }
 
 }

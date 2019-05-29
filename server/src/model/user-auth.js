@@ -44,6 +44,7 @@ module.exports = (UserSchema) => {
             username: this.username,
             kind: this.kind,
             storename: this.storeName,
+            balance: this.balance,
             token: this.generateJWT(),
         }
     }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../Profile.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
-    faUser, faStore, faEnvelope
+    faUser, faStore, faEnvelope, faDollarSign
 } from '@fortawesome/fontawesome-free-solid';
 
 export default class ProviderProfile extends Component {
@@ -32,6 +32,14 @@ export default class ProviderProfile extends Component {
                         Email
                     </div>
                     <div className={'Profile-item-right'}>{this.props.user.email}</div>
+                </div>
+
+                <div className={'Profile-item'}>
+                    <div className={'Profile-item-left'}>
+                        <FontAwesomeIcon icon={faDollarSign} className={'Profile-item-left-icon'}/>
+                        Balance
+                    </div>
+                    <div className={'Profile-item-right'}>{this.props.user.balance} $</div>
                 </div>
             </div>
         );
