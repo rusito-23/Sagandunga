@@ -5,9 +5,10 @@ import {LocalizeProvider} from 'react-localize-redux';
 import AppContainer from './AppContainer';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import LoggedHome from './components/LoggedHome';
 import {NotFound} from './templates/Messages/ErrorMessages';
 import {
-    HOME, PROFILE
+    LOGGED_HOME, HOME, PROFILE
 } from './constants/appRoutes';
 import Navbar from './templates/Nav';
 import {getUserLS} from './utils/userStorageUtil';
@@ -45,6 +46,7 @@ export default function RouterContainer({history}) {
                     <Switch>
                         <PublicRoute exact path={HOME} component={Home}/>
                         <PrivateRoute exact path={PROFILE} component={Profile}/>
+                        <PrivateRoute exact path={LOGGED_HOME} component={LoggedHome}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </AppContainer>
