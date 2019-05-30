@@ -17,7 +17,9 @@ module.exports.find = (req, res, next) => {
             filter.locationId = loc.id
         }
     }).then(() => {
-        return model.Provider.find(filter)
+        return model.Provider.find(filter, {
+            storeName: 1, username: 1, maxDeliveryDistance: 1, kind: 1
+        })
     }).then((providers) => {
         res.send(providers);
     }).catch(next);

@@ -1,9 +1,10 @@
 import React from 'react';
 import './Messages.scss';
 import ColBurger from '../../assets/img/colburger.png';
+import {BaseContainer} from '../BaseContainer/BaseContainer';
 
 // Generic Error Message
-const ErrorMessage = ({message, visible}) => {
+export const ErrorMessage = ({message, visible}) => {
     if (visible) {
         return (
             <div className={'Messages-error'}>
@@ -14,7 +15,7 @@ const ErrorMessage = ({message, visible}) => {
 };
 
 // 404 - NotFound!
-const NotFound = () => (
+export const NotFound = () => (
     <div className={'Messages-redirect-error'}>
         <h1>Oops! Sorry!</h1>
         <h2>The page you are looking for does not exist!</h2>
@@ -23,4 +24,15 @@ const NotFound = () => (
     </div>
 );
 
-export {ErrorMessage, NotFound};
+export const BaseErrorMessage = ({message, visible}) => {
+    if (visible) {
+        return (
+            <div className={'Messages-redirect-error'}>
+                <h1>Oops! Sorry!</h1>
+                <h2>{message}</h2>
+                <h3>We are very, very, very much sorry for your inconveniences.</h3>
+                <img src={ColBurger} alt={'Crying Burger :P'} />
+            </div>
+        )
+    } else { return null }
+};

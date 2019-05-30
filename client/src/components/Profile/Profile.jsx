@@ -42,7 +42,9 @@ export default class Profile extends Component {
                                     <FontAwesomeIcon icon={item.faIcon} className={'Profile-item-left-icon'}/>
                                     {item.label}
                                 </div>
-                                <div className={'Profile-item-right'}>{this.state.user[item.attr]}</div>
+                                <div className={'Profile-item-right'}>
+                                    {this.state.user[item.attr]} {item.extra}
+                                </div>
                             </div>)
                     })}
 

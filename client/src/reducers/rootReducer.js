@@ -6,10 +6,12 @@ import history from '../history';
 import userAuthReducer from './userAuthReducer';
 import locationsReducer from './locationsReducer';
 import registerReducer from './registerReducer';
+import homeReducer from './homeReducer';
 
 export default combineReducers({
     router: connectRouter(history),
     userAuthReducer,
     locationsReducer,
     registerReducer,
+    homeReducer,
 });

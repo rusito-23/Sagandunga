@@ -47,12 +47,11 @@
   }
 
   &-button:hover {
-    background: $primary-back;
-    color: $primary;
+    @include special-hover;
   }
 
   &-button-delete:hover {
-    color: darkred;
+    color: indianred;
   }
 
 }
