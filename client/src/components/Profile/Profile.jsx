@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import './Profile.scss';
-import {CONSUMER_TYPE} from '../../constants/generalConstants';
-import ConsumerProfile from './ConsumerProfile/ConsumerProfile';
-import ProviderProfile from './ProviderProfile/ProviderProfile';
 import {getUserLS} from '../../utils/userStorageUtil';
-import {Animated} from 'react-animated-css';
+import {BaseContainer} from '../../templates/BaseContainer/BaseContainer';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowDown, faArrowUp} from '@fortawesome/fontawesome-free-solid';
+import ProfileActions from './ProfileActions';
+import {getProfileItems} from '../../services/userProfileServices';
 
 export default class Profile extends Component {
 
@@ -12,26 +13,47 @@ export default class Profile extends Component {
         super(props);
         this.state = {
             user: getUserLS(),
+            showActions: false
         }
     }
 
-    child = () => {
-        if (this.state.user.kind === CONSUMER_TYPE) {
-            return <ConsumerProfile user={this.state.user}/>;
-        } else {
-            return <ProviderProfile user={this.state.user}/>;
-        }
+    showUnshowActions = () => {
+        this.setState({
+            showActions: !this.state.showActions
+        })
+    };
+
+    arrow = () => {
+        return this.state.showActions ? faArrowUp : faArrowDown;
     };
 
     render() {
         return (
-            <div className={'Profile'}>
-                <Animated animationIn={'bounceIn'} animationOut={'slideOutRight'}>
-                    <h2>Welcome, {this.state.user.username}!</h2>
-                    <h3>Your profile</h3>
-                    {this.child()}
-                </Animated>
-            </div>
+            <BaseContainer
+                title={'Profile'}
+                subtitle={null}>
+
+                <div className={'Profile-container'}>
+
+                    {getProfileItems(this.state.user).map((item) => {
+                        return (
+                            <div className={'Profile-item'}>
+                                <div className={'Profile-item-left'}>
+                                    <FontAwesomeIcon icon={item.faIcon} className={'Profile-item-left-icon'}/>
+                                    {item.label}
+                                </div>
+                                <div className={'Profile-item-right'}>{this.state.user[item.attr]}</div>
+                            </div>)
+                    })}
+
+                    <ProfileActions show={this.state.showActions} user={this.state.user}/>
+
+                    <div onClick={this.showUnshowActions}>
+                        <FontAwesomeIcon icon={this.arrow()} className={'Profile-button-down'}/>
+                    </div>
+                </div>
+
+            </BaseContainer>
         );
     }
 }

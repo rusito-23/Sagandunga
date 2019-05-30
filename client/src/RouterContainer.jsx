@@ -5,10 +5,10 @@ import {LocalizeProvider} from 'react-localize-redux';
 import AppContainer from './AppContainer';
 import Home from './components/Home';
 import Profile from './components/Profile';
-import LoggedHome from './components/LoggedHome';
+import Users from './components/Users';
 import {NotFound} from './templates/Messages/ErrorMessages';
 import {
-    LOGGED_HOME, HOME, PROFILE
+    HOME, USERS, PROFILE
 } from './constants/appRoutes';
 import Navbar from './templates/Nav';
 import {getUserLS} from './utils/userStorageUtil';
@@ -18,7 +18,7 @@ function PrivateRoute({component: Component, ...rest}) {
     const next = (props) => (
         getUserLS()
             ? <Component {...props} />
-            : <Redirect to={HOME}/> );
+            : <Redirect to={USERS}/> );
 
     return (
         <div>
@@ -33,7 +33,7 @@ function PublicRoute({component: Component, ...rest}) {
     const next = (props) => (
         !getUserLS()
             ? <Component {...props} />
-            : <Redirect to={PROFILE}/> );
+            : <Redirect to={HOME}/> );
 
     return (<Route {...rest} render={next}/>)
 }
@@ -44,9 +44,9 @@ export default function RouterContainer({history}) {
             <LocalizeProvider>
                 <AppContainer>
                     <Switch>
-                        <PublicRoute exact path={HOME} component={Home}/>
+                        <PublicRoute exact path={USERS} component={Users}/>
                         <PrivateRoute exact path={PROFILE} component={Profile}/>
-                        <PrivateRoute exact path={LOGGED_HOME} component={LoggedHome}/>
+                        <PrivateRoute exact path={HOME} component={Home}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </AppContainer>

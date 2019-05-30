@@ -23,3 +23,16 @@
   @include shadow(#777);
   background: $primary;
 }
+
+@mixin home-primary-container {
+  @include primary-container;
+  @include full-rounded-borders(10px);
+
+  width: 50%;
+  height: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 200px;
+  color: white;
+  font-size: calc(15px + 1vmin);
+}

@@ -1,3 +1,3 @@
-export const HOME='/';
-export const LOGGED_HOME='/home';
+export const USERS='/';
+export const HOME='/home';
 export const PROFILE='/profile';

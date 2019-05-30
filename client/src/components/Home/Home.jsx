@@ -1,99 +1,47 @@
 import React, {Component} from 'react';
 import './Home.scss';
-import Login from './Login'
-import Register from './Register'
-import delicious_pizza from '../../assets/img/delicious_pizza.jpg'
-import {SuccessMessage} from '../../templates/Messages/SuccessMessages';
-
-const states = {
-    LOGIN: 1,
-    REGISTER: 2,
-    switch: function (old) {
-        switch (old) {
-            case this.LOGIN:
-                return this.REGISTER;
-            case this.REGISTER:
-                return this.LOGIN;
-            default:
-                break;
-        }
-    }
-};
+import {getUserLS} from '../../utils/userStorageUtil';
+import {BaseContainer} from '../../templates/BaseContainer/BaseContainer';
+import {getHomeActions} from '../../services/homeServices';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faWrench} from '@fortawesome/fontawesome-free-solid';
 
 export default class Home extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-            state: states.LOGIN,
-            register_form: 'consumer',
-        };
-
-        this.renderSwitch.bind(this);
-        this.switchState.bind(this);
-        this.activeForm.bind(this);
+            user: getUserLS(),
+        }
     }
-
-    renderSwitch = () => {
-        switch (this.state.state) {
-            case states.LOGIN:
-                return {
-                    child: (<Login/>),
-                    message: 'Create a new account'
-                };
-            case states.REGISTER:
-                return {
-                    child: (<Register changeRegisterForm={this.changeRegisterForm}/>),
-                    message: 'I already have an account'
-                };
-            default:
-                break;
-        }
-    };
-
-    switchState = () => {
-        this.setState({
-            state: states.switch(this.state.state)
-        })
-    };
-
-    activeForm = () => {
-        switch (this.state.state) {
-            case states.LOGIN:
-                return 'login';
-            case states.REGISTER:
-                return this.state.register_form;
-            default: break;
-        }
-    };
-
-    changeRegisterForm = (form) => {
-        this.setState({
-            register_form: form
-        })
-    };
 
     render() {
-        const {child, message} = this.renderSwitch();
         return (
-            <div className={'Home'}>
-                <div className={'Home-column Home-img-cover'}>
-                    <img src={delicious_pizza} alt={'Delicious Pizza!'}/>
-                </div>
-                <div className={'Home-column Home-login-register'}>
-                    {child}
+            <BaseContainer
+                title={'Home'}
+                subtitle={null}>
 
-                    <SuccessMessage
-                        visible={this.props.registrationSuccess}
-                        message={'Registration successfull!'} />
+                {getHomeActions(this.state.user).map((action) => {
+                    return (
+                        <div className={'Home-action'}>
+                            <button>
+                                <FontAwesomeIcon icon={action.faIcon} className={'Home-action-icon'}/>
+                                {action.label}
+                            </button>
+                        </div>
+                    );
+                })}
 
-                    <button className={'Home-send-button'}
-                            type={'submit'}
-                            form={this.activeForm()}>Send</button>
-                    <p className={'Home-switch-message'} onClick={this.switchState}>{message}</p>
+                <div className={'Home-dashboard'}>
+                    <h3 className={'Home-subtitle'}>Dashboard</h3>
+                    <h4 className={'Home-subtitle'}>
+                        <FontAwesomeIcon icon={faWrench} className={'Home-action-icon'}/>
+                        This feature will be available soon enough!
+                    </h4>
                 </div>
-            </div>
+
+            </BaseContainer>
         );
     }
+
 }
