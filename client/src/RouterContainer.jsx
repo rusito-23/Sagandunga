@@ -5,7 +5,7 @@ import {LocalizeProvider} from 'react-localize-redux';
 import AppContainer from './AppContainer';
 import Home from './components/Home';
 import Profile from './components/Profile';
-import LoggedHome from './components/LoggedHome';
+import Users from './components/Users';
 import {NotFound} from './templates/Messages/ErrorMessages';
 import {
     LOGGED_HOME, HOME, PROFILE
@@ -44,9 +44,9 @@ export default function RouterContainer({history}) {
             <LocalizeProvider>
                 <AppContainer>
                     <Switch>
-                        <PublicRoute exact path={HOME} component={Home}/>
+                        <PublicRoute exact path={HOME} component={Users}/>
                         <PrivateRoute exact path={PROFILE} component={Profile}/>
-                        <PrivateRoute exact path={LOGGED_HOME} component={LoggedHome}/>
+                        <PrivateRoute exact path={LOGGED_HOME} component={Home}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </AppContainer>
