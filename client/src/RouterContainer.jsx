@@ -6,9 +6,10 @@ import AppContainer from './AppContainer';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Users from './components/Users';
+import ProvidersList from './components/Consumers/ProvidersList';
 import {NotFound} from './templates/Messages/ErrorMessages';
 import {
-    HOME, USERS, PROFILE
+    HOME, USERS, PROFILE, PROVIDERS
 } from './constants/appRoutes';
 import Navbar from './templates/Nav';
 import {getUserLS} from './utils/userStorageUtil';
@@ -47,6 +48,7 @@ export default function RouterContainer({history}) {
                         <PublicRoute exact path={USERS} component={Users}/>
                         <PrivateRoute exact path={PROFILE} component={Profile}/>
                         <PrivateRoute exact path={HOME} component={Home}/>
+                        <PrivateRoute exact path={PROVIDERS} component={ProvidersList}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </AppContainer>

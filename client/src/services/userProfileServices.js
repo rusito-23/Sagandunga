@@ -15,7 +15,8 @@ const items = {
     balance: {
         label: 'Balance',
         attr: 'balance',
-        faIcon: faDollarSign
+        faIcon: faDollarSign,
+        extra: '$',
     },
     storeName: {
         label: 'Store Name',

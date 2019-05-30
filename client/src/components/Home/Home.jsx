@@ -15,16 +15,23 @@ export default class Home extends Component {
         }
     }
 
+    callAction = (event) => {
+        this.props[event.target.id](
+            this.props.history,
+            this.state.user
+        );
+    };
+
     render() {
         return (
             <BaseContainer
                 title={'Home'}
                 subtitle={null}>
 
-                {getHomeActions(this.state.user).map((action) => {
+                {getHomeActions(this.state.user).map((action, index) => {
                     return (
-                        <div className={'Home-action'}>
-                            <button>
+                        <div key={index} className={'Home-action'}>
+                            <button id={action.action} onClick={this.callAction} >
                                 <FontAwesomeIcon icon={action.faIcon} className={'Home-action-icon'}/>
                                 {action.label}
                             </button>

@@ -7,12 +7,14 @@ const actions = {
         label: 'ORDER NOW',
         message: 'Search for your favorite provider ' +
                  'and order some food right away!',
-        faIcon: faShoppingCart
+        faIcon: faShoppingCart,
+        action: 'getProviders',
     },
     myItems: {
         label: 'MY ITEMS',
         message: 'Manage your offered products',
-        faIcon: faList
+        faIcon: faList,
+        action: 'getItemsForProvider',
     }
 };
 

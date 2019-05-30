@@ -9,3 +9,12 @@ export const LOC = 'LOCATIONS';
 // registerActions
 export const REGISTRATION_ERROR = 'REGISTRATION_ERROR';
 export const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
+
+// homeActions
+// consumer
+export const PROVIDERS_SUCCESS = 'REGISTRATION';
+export const PROVIDERS_ERROR = 'PROVIDERS_ERROR';
+
+// provider
+export const ITEMS_SUCCESS = 'ITEMS';
+export const ITEMS_ERROR = 'ITEMS_ERROR';

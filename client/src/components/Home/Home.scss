@@ -1,13 +1,6 @@
 @import '../../assets/style/mixins';
 @import '../../assets/style/colors';
 
-@mixin special-hover {
-  letter-spacing: 2px;
-  -webkit-box-shadow: 0 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0 5px 40px -10px rgba(0,0,0,0.57);
-  transition: all 0.3s ease 0s;
-}
-
 .Home {
   text-align: center;
 
@@ -28,6 +21,7 @@
       color: $secondary-back;
       text-transform: uppercase;
       font-size: calc(10px + 1vmin);
+      width: 100%;
     }
 
     button:hover {
