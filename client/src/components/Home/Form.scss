@@ -1,7 +1,10 @@
-@import '../../assets/style/_colors.scss';
-@import '../../assets/style/_effects.scss';
+@import '../../assets/style/_colors';
+@import '../../assets/style/_effects';
+@import '../../assets/style/_mixins';
 
 .Form {
+  @include primary-container;
+
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -10,7 +13,6 @@
   align-items: stretch;
 
   animation: customFadeEffect 1s;
-  background-color: $primary;
   color: white;
 
   &-container {
@@ -65,10 +67,7 @@
   }
 
   &-register {
-    -webkit-border-bottom-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    -webkit-border-bottom-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    @include bottom-rounded-borders(10px);
     min-height: 500px;
   }
 

@@ -6,10 +6,11 @@
   text-align: center;
 
   &-container {
+    @include primary-container;
+
     width: 50%;
     height: 80%;
     margin: 0 auto;
-    background-color: $primary;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;

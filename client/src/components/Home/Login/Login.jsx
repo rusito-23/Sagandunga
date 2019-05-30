@@ -28,6 +28,18 @@ export default class Login extends Component {
             this.props.history);
     };
 
+    componentWillUnmount() {
+        this.setState({
+            loginError: false
+        })
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            loginError: nextProps.loginError
+        })
+    }
+
     render() {
         return (
             <Animated animationIn={'slideInRight'} animationOut={'slideOutRight'}>
@@ -49,7 +61,7 @@ export default class Login extends Component {
                                 />
 
                                 <ErrorMessage
-                                    visible={this.props.loginError}
+                                    visible={this.state.loginError}
                                     message={'Incorrect username or password'}/>
                             </form>
                         </div>
