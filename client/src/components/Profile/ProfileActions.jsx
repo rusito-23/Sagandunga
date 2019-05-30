@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Profile.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Animated} from 'react-animated-css';
-import {getActionsFor} from '../../utils/userProfileUtil';
+import {getProfileActions} from '../../services/userProfileServices';
 import {faTrash} from '@fortawesome/fontawesome-free-solid';
 
 export default class ProfileActions extends Component {
@@ -15,7 +15,7 @@ export default class ProfileActions extends Component {
             <Animated animationIn={'fadeInDown'} animationOut={'slideOutRight'}>
                 <div className={'Profile-actions-container'}>
 
-                    {getActionsFor(this.props.user).map((action) => {
+                    {getProfileActions(this.props.user).map((action) => {
                         return (
                             <div className={'Profile-item'}>
                                 <button className={'Profile-button'}>

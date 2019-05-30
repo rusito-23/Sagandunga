@@ -1,5 +1,5 @@
 import {CONSUMER_TYPE, PROVIDER_TYPE} from '../constants/generalConstants';
-import {faDollarSign, faEnvelope, faPhone, faStore, faUser} from '@fortawesome/fontawesome-free-solid';
+import {faDollarSign, faEnvelope, faPhone, faStore, faUser} from '@fortawesome/fontawesome-free-solid/index';
 
 const items = {
     username: {
@@ -24,7 +24,7 @@ const items = {
     },
 };
 
-export function getItemsFor(user) {
+export function getProfileItems(user) {
     const common = [items.username, items.email, items.balance];
     switch (user.kind) {
         case CONSUMER_TYPE:
@@ -37,17 +37,17 @@ export function getItemsFor(user) {
 }
 
 const actions = {
+    deposit: {
+        label: 'DEPOSIT',
+        faIcon: faDollarSign // TODO: do not repeat symbol?
+    },
     contact: {
         label: 'CONTACT',
         faIcon: faPhone
     },
-    deposit: {
-        label: 'DEPOSIT',
-        faIcon: faDollarSign // TODO: do not repeat symbol?
-    }
 };
 
-export function getActionsFor(user) {
+export function getProfileActions(user) {
     const common = [ actions.contact ];
     switch (user.kind) {
         case CONSUMER_TYPE:

@@ -1,7 +1,7 @@
 import axios from 'axios/index';
 import {LOGIN_ERROR, USER_AUTH} from '../constants/actionTypes';
 import {LOGIN} from '../constants/apiRoutes';
-import {HOME, PROFILE} from '../constants/appRoutes';
+import {USERS, HOME} from '../constants/appRoutes';
 import {removeUserLS, setUserLS} from '../utils/userStorageUtil';
 
 export const userLogin = (state, history) => {
@@ -18,7 +18,7 @@ export const userLogin = (state, history) => {
                 type: USER_AUTH,
                 payload: res.data.user,
             });
-            history.push(PROFILE);
+            history.push(HOME);
         }).catch(() => {
             dispatch({
                 type: LOGIN_ERROR
@@ -30,6 +30,6 @@ export const userLogin = (state, history) => {
 export const userLogout = (hist) => {
     return () => {
         removeUserLS();
-        hist.push(HOME);
+        hist.push(USERS);
     }
 };
