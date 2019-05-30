@@ -1,9 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './assets/style/index.sass';
-import Home from './Modules/Home/Home.jsx';
+import {render} from 'react-dom';
+import './assets/style/index.scss';
 import * as serviceWorker from './serviceWorker';
+import RootContainer from './RootContainer';
 
-ReactDOM.render(<Home/>, document.getElementById('root'));
+render(
+    <RootContainer />,
+    document.getElementById('root')
+);
 
 serviceWorker.unregister();

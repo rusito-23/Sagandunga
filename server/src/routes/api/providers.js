@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const providerController = require('../../controllers/providerController');
-const auth = require("../auth");
+const auth = require('../auth');
 
 // GET
 router.get('/',

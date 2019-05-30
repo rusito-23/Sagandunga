@@ -2,12 +2,25 @@
   "name": "sagandunga-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:8080/api",
   "dependencies": {
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "axios": "^0.18.0",
+    "connected-react-router": "^6.4.0",
+    "history": "^4.9.0",
+    "node-sass": "4.11.0",
     "react": "^16.6.3",
+    "react-animated-css": "^1.2.1",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
-    "node-sass": "4.11.0"
+    "react-localize-redux": "^3.5.3",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "^3.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,5 +36,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-redux": "^7.0.3"
+  }
 }

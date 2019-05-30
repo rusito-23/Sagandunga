@@ -1,0 +1,76 @@
+@import '../../assets/style/_colors';
+@import '../../assets/style/_effects';
+@import '../../assets/style/_mixins';
+
+.Form {
+  @include primary-container;
+
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  width: 500px;
+  align-items: stretch;
+
+  animation: customFadeEffect 1s;
+  color: white;
+
+  &-container {
+    min-width: 100%;
+  }
+
+  &-input-container {
+    margin: auto;
+    input, select {
+      display: block;
+      margin-bottom: 32px;
+      text-align: center;
+      font-size: calc(2px + 2vmin);
+      border: none;
+      background-color: $secondary;
+      color: white;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+
+    input[type='number'] {
+      -moz-appearance:textfield;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input::placeholder {
+      color: $primary
+    }
+  }
+
+  &-input-icon {
+    display: inline-block;
+    margin-right: 16px;
+    float: left;
+
+    &-two-rows {
+      height: 100px;
+    }
+  }
+
+  &-login {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    min-height: 200px;
+  }
+
+  &-register {
+    @include bottom-rounded-borders(10px);
+    min-height: 500px;
+  }
+
+}
+
+

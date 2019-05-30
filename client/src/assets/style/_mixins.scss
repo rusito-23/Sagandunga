@@ -1,0 +1,25 @@
+@import './_colors';
+
+@mixin full-rounded-borders($border) {
+  -webkit-border-radius: $border;
+  -moz-border-radius: $border;
+  border-radius: $border;
+}
+
+@mixin bottom-rounded-borders($border) {
+  -webkit-border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@mixin shadow($color) {
+  -moz-box-shadow:    3px 3px 15px 3px $color;
+  -webkit-box-shadow: 3px 3px 15px 3px $color;
+  box-shadow:         3px 3px 15px 3px $color;
+}
+
+@mixin primary-container {
+  @include shadow(#777);
+  background: $primary;
+}

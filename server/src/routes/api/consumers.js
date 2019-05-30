@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const consumerController = require('../../controllers/consumerController');
-const auth = require("../auth");
+const auth = require('../auth');
 
 // FIND
 router.get('/',

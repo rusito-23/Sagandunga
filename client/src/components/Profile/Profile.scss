@@ -1,0 +1,71 @@
+@import '../../assets/style/colors';
+@import '../../assets/style/_mixins';
+
+.Profile {
+
+  text-align: center;
+
+  &-container {
+    @include primary-container;
+
+    width: 50%;
+    height: 80%;
+    margin: 0 auto;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    min-height: 200px;
+    color: white;
+    font-size: calc(15px + 1vmin);
+    padding: 20px;
+
+    display: grid;
+  }
+
+  &-item {
+    margin: 30px 80px 30px 80px;
+
+    &-left {
+      float: left;
+
+      &-icon {
+        display: inline-block;
+        margin-right: 20px;
+        float: left;
+      }
+
+    }
+
+    &-right {
+      float: right;
+      color: $secondary;
+    }
+
+  }
+
+  &-button-down {
+    cursor: pointer;
+  }
+
+  &-button {
+    @include full-rounded-borders(10px);
+    background: none;
+    border: black;
+    outline: inherit;
+    padding: 20px;
+    font: inherit;
+    cursor: pointer;
+    color: $primary-back;
+    font-size: calc(10px + 1vmin);
+  }
+
+  &-button:hover {
+    background: $primary-back;
+    color: $primary;
+  }
+
+  &-button-delete:hover {
+    color: darkred;
+  }
+
+}
