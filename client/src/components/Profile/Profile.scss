@@ -6,19 +6,6 @@
   text-align: center;
 
   &-container {
-    @include primary-container;
-
-    width: 50%;
-    height: 80%;
-    margin: 0 auto;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    min-height: 200px;
-    color: white;
-    font-size: calc(15px + 1vmin);
-    padding: 20px;
-
     display: grid;
   }
 
