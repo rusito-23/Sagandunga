@@ -1,0 +1,10 @@
+@import '../../assets/style/mixins';
+
+.BaseContainer {
+  text-align: center;
+
+  &-primary {
+    @include home-primary-container;
+    display: grid;
+  }
+}
