@@ -5,7 +5,7 @@ import {BaseContainer} from '../../templates/BaseContainer/BaseContainer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowDown, faArrowUp} from '@fortawesome/fontawesome-free-solid';
 import ProfileActions from './ProfileActions';
-import {getItemsFor} from '../../utils/userProfileUtil';
+import {getProfileItems} from '../../services/userProfileServices';
 
 export default class Profile extends Component {
 
@@ -31,11 +31,11 @@ export default class Profile extends Component {
         return (
             <BaseContainer
                 title={'Profile'}
-                subtitle={`Welcome ${this.state.user.username}!`}>
+                subtitle={null}>
 
                 <div className={'Profile-container'}>
 
-                    {getItemsFor(this.state.user).map((item) => {
+                    {getProfileItems(this.state.user).map((item) => {
                         return (
                             <div className={'Profile-item'}>
                                 <div className={'Profile-item-left'}>
