@@ -6,7 +6,7 @@ import ReduxContainer from './ReduxContainer';
 
 // Store and History
 import store from './Store';
-import history from './history';
+import history from './utils/historyUtils';
 
 /**
  * Base container for the entire app.
