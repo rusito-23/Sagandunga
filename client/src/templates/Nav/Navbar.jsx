@@ -18,7 +18,7 @@ export default class Navbar extends Component {
 
                 <div className={'Nav-bar-header'}>
                     <img src={Pizza} alt={'Little pizza for you'} />
-                    <div className={'Nav-bar-header-title'}>Sagandunga</div>
+                    <div className={'Nav-bar-header-title'}>Deliveroo</div>
                 </div>
 
                 <div className="Nav-bar-btn" >

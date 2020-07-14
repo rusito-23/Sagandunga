@@ -1,13 +1,28 @@
-# Sagandunga :dog:
-React - Node demo application
+# Deliveroo
 
-## Install and run :rocket:
+Delivery Web Application.
+Made with:
 
-Run in top level folder!
+- React
+- Node (Express)
+- MongoDB
+
+## Set Up :rocket:
+
+Install dependencies:
 
 ```
-npm i && npm start
+npm i
 ```
 
-## Contribute 
-Do whatever you please, it's not a serious project. :smile:
+Run:
+
+```
+npm start
+```
+
+This will run: 
+
+- the server in `localhost:8080`
+- the client in `localhost:3000`
+- the db in `localhost:27017`

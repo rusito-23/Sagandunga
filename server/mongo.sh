@@ -16,7 +16,7 @@ dropAll() {
     for collection in "${collections[@]}"; do
         echo "Dropping $collection"
         echo "db.$collection.drop()"
-        mongo Sagandunga --eval "db.$collection.drop()"
+        mongo Deliveroo --eval "db.$collection.drop()"
     done
 }
 
@@ -25,7 +25,7 @@ dropAll() {
 # searches automatically into database/<collection_name>.json
 mongoimportjson() {
     mongoimport --jsonArray \
-                --db Sagandunga \
+                --db Deliveroo \
                 --collection $1 \
                 --file database/$1.json  \
                 --batchSize 1

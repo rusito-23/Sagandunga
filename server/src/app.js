@@ -38,6 +38,6 @@ app.use((err, req, res, next) => {
 // Start server
 Promise.all([db.connect(), app.listen(8080)])
     .then(() => {
-        console.log('Sagandunga SERVER - Listening on port 8080!')
+        console.log('Deliveroo SERVER - Listening on port 8080!')
     }).catch(err => console.log(err));
 

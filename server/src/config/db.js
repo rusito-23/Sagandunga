@@ -26,5 +26,5 @@ module.exports.plugin = () => {
 
 module.exports.connect = () => {
     mongoose.Promise = global.Promise;
-    return mongoose.connect('mongodb://localhost:27017/Sagandunga', { useNewUrlParser: true })
+    return mongoose.connect('mongodb://localhost:27017/Deliveroo', { useNewUrlParser: true })
 };
