@@ -10,7 +10,7 @@
     "axios": "^0.18.0",
     "connected-react-router": "^6.4.0",
     "history": "^4.9.0",
-    "node-sass": "4.11.0",
+    "node-sass": "4.13.1",
     "react": "^16.6.3",
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.6.3",
